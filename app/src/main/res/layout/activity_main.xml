@@ -7,14 +7,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="40dp"
-    android:background="@drawable/gradient"
-    android:gravity="center"
+    android:gravity="center|top"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:src="@drawable/logo"
+        android:scaleType="fitXY"
+        android:layout_width="200dp"
+        android:layout_height="200dp" />
 
     <EditText
         android:id="@+id/etUsername"
         android:ems="10"
         android:hint="Username"
+        android:layout_marginTop="40dp"
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/ic_email"
         android:textSize="16sp"
