@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="5dp"
-    android:background="#EBF6F3"
+    android:background="@color/teal_700"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -69,7 +69,7 @@
         android:text="200"
         app:layout_constraintEnd_toStartOf="@+id/btnAddtoCart"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="RtlCompat" />
+        tools:ignore="HardcodedText,RtlCompat,RtlHardcoded" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -100,7 +100,8 @@
         android:layout_marginTop="72dp"
         android:text="Rs."
         app:layout_constraintEnd_toStartOf="@+id/tvItemPrice"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
     <!--    <RatingBar-->
 <!--        android:id="@+id/ratingBar"-->
