@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/itemImage"
+        android:layout_width="117dp"
+        android:layout_height="93dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/momo"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tvItemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:text="Item Name"
+        app:layout_constraintStart_toEndOf="@+id/itemImage"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlCompat" />
+
+    <TextView
+        android:id="@+id/tvItemType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="12dp"
+        android:text="Item Type"
+        app:layout_constraintStart_toEndOf="@+id/itemImage"
+        app:layout_constraintTop_toBottomOf="@+id/tvItemName" />
+
+    <ImageButton
+        android:id="@+id/btnDots"
+        android:layout_width="38dp"
+        android:layout_height="35dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/dots"
+        tools:ignore="ContentDescription" />
+
+    <ImageButton
+        android:id="@+id/btnAddtoCart"
+        android:layout_width="38dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDots"
+        app:srcCompat="@drawable/addtocart"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tvItemPrice"
+        android:layout_width="51dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:text="200"
+        app:layout_constraintEnd_toStartOf="@+id/btnAddtoCart"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlCompat" />
+
+    <TextView
+        android:id="@+id/tvRs"
+        android:layout_width="22dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="72dp"
+        android:text="Rs."
+        app:layout_constraintEnd_toStartOf="@+id/tvPrice"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="25dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/itemImage"
+        app:layout_constraintTop_toBottomOf="@+id/tvItemType"
+        app:srcCompat="@drawable/star"
+        tools:ignore="ContentDescription,VectorDrawableCompat" />
+
+    <TextView
+        android:id="@+id/tvItemRating"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginStart="4dp"
+        android:text="4.5"
+        app:layout_constraintEnd_toStartOf="@+id/tvRs"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="73dp" />
+
+    <!--    <RatingBar-->
+<!--        android:id="@+id/ratingBar"-->
+<!--        android:progressDrawable="@drawable/my_ratingbar"-->
+<!--        style="@style/MyRatingBar"-->
+<!--        android:layout_width="123dp"-->
+<!--        android:layout_height="28dp"-->
+<!--        android:layout_marginStart="4dp"-->
+<!--        android:layout_marginLeft="4dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:numStars="3"-->
+<!--        android:rating="4"-->
+<!--        android:stepSize="0.5"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/itemImage"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvItemType"-->
+<!--        tools:ignore="MissingConstraints" />-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -20,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        app:itemTextColor="@color/purple_200"
         app:menu="@menu/nav_bottom"
         />
 

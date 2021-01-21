@@ -20,12 +20,14 @@
     <EditText
         android:id="@+id/etUsername"
         android:ems="10"
-        android:hint="Username"
+        android:hint="Email"
         android:layout_marginTop="40dp"
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/ic_email"
         android:textSize="16sp"
         android:paddingStart="10dp"
+        android:inputType="textEmailAddress"
+        android:drawableTint="@color/purple_200"
         android:drawablePadding="10dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -39,6 +41,7 @@
         android:background="@drawable/custom_input"
         android:paddingStart="10dp"
         android:drawablePadding="10dp"
+        android:drawableTint="@color/purple_200"
         android:drawableStart="@drawable/ic_lock"
         android:textSize="16sp"
         android:layout_width="match_parent"
@@ -82,9 +85,5 @@
             android:layout_height="wrap_content" />
 
     </LinearLayout>
-
-
-
-
 
 </LinearLayout>
