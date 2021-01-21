@@ -1,5 +1,6 @@
 package com.saugat.finalassignment.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,12 +17,14 @@ import com.saugat.finalassignment.models.ItemMenu
 class HomeFragment : Fragment() {
     private val lstItems = ArrayList<ItemMenu>()
     private lateinit var recyclerViewDashboard: RecyclerView
+    var i = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
     }
 
+    @SuppressLint("UseRequireInsteadOfGet")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,11 +33,21 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         recyclerViewDashboard = view.findViewById(R.id.recyclerViewDashboard)
 
-        val adapter = ItemMenuAdapter(ItemData.get().list(),requireContext())
+        if (ItemData.get().list().size == 0){
+            loadItems()
+        }
+
+        val adapter = ItemMenuAdapter(ItemData.get().list(),context!!)
         recyclerViewDashboard.layoutManager = LinearLayoutManager(activity)
         recyclerViewDashboard.adapter = adapter
 
         return view
+    }
+
+    private fun loadItems() {
+        ItemData.get().list().add(ItemMenu(i++,"Chicken MoMo","Non-Veg",4.5F,200))
+        ItemData.get().list().add(ItemMenu(i++,"Veg MoMo","Veg",4F,120))
+        ItemData.get().list().add(ItemMenu(i++,"Jhol MoMo","Non-Veg",4.7F,250))
     }
 
 }
