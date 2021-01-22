@@ -26,4 +26,8 @@
 <!--        <item name="minHeight">18dp</item>-->
 <!--        <item name="maxHeight">18dp</item>-->
 <!--    </style>-->
+
+    <style name="customStyle" >
+        <item name="android:textSize">17sp</item>
+    </style>
 </resources>
