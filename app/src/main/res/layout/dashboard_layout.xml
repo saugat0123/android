@@ -11,41 +11,47 @@
 
     <ImageView
         android:id="@+id/itemImage"
-        android:layout_width="117dp"
-        android:layout_height="93dp"
+        android:layout_width="118dp"
+        android:layout_height="94dp"
         android:scaleType="fitXY"
+        android:src="@drawable/momo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/momo"
         tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tvItemName"
+        style="@style/customStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
+        android:fontFamily="@font/meticula"
         android:text="Item Name"
-        style="@style/customStyle"
+        android:textSize="19sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/itemImage"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="RtlCompat" />
 
     <TextView
         android:id="@+id/tvItemType"
+        style="@style/customStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/customStyle"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/meticula"
         android:text="Item Type"
+        android:textSize="19sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/itemImage"
         app:layout_constraintTop_toBottomOf="@+id/tvItemName" />
 
     <ImageButton
         android:id="@+id/btnDots"
-        android:layout_width="38dp"
-        android:layout_height="35dp"
+        android:layout_width="42dp"
+        android:layout_height="34dp"
         android:scaleType="fitXY"
         android:scaleY="1.2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,10 +59,25 @@
         app:srcCompat="@drawable/dots"
         tools:ignore="ContentDescription" />
 
+    <TextView
+        android:id="@+id/tvItemRating"
+        style="@style/customStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="68dp"
+        android:fontFamily="@font/meticula"
+        android:text="4.5"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/tvItemName"
+        tools:ignore="MissingConstraints" />
+
     <ImageButton
         android:id="@+id/btnAddtoCart"
-        android:layout_width="38dp"
-        android:layout_height="33dp"
+        android:layout_width="41dp"
+        android:layout_height="31dp"
         android:layout_marginTop="24dp"
         android:scaleType="fitXY"
         android:scaleY="1.4"
@@ -72,9 +93,12 @@
         style="@style/customStyle"
         android:layout_width="wrap_content"
         android:layout_height="19dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="12dp"
+        android:fontFamily="@font/meticula"
         android:text="200"
+        android:textSize="19sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/btnAddtoCart"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText,RtlCompat,RtlHardcoded" />
@@ -84,35 +108,25 @@
         style="@style/customStyle"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="72dp"
+        android:fontFamily="@font/meticula"
         android:text="Rs."
+        android:textSize="19sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/tvItemPrice"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="25dp"
-        android:layout_height="19dp"
+        android:layout_width="24dp"
+        android:layout_height="17dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="12dp"
         app:layout_constraintStart_toEndOf="@+id/itemImage"
         app:layout_constraintTop_toBottomOf="@+id/tvItemType"
         app:srcCompat="@drawable/star"
         tools:ignore="ContentDescription,VectorDrawableCompat" />
-
-    <TextView
-        android:id="@+id/tvItemRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/customStyle"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="68dp"
-        android:text="4.5"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/tvItemName"
-        tools:ignore="MissingConstraints" />
 
     <!--    <RatingBar-->
 <!--        android:id="@+id/ratingBar"-->

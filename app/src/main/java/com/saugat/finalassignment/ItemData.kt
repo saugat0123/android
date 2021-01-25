@@ -1,11 +1,11 @@
 package com.saugat.finalassignment
 
-import com.saugat.finalassignment.models.ItemMenu
+import com.saugat.finalassignment.models.Item
 
 class ItemData private constructor(){
-    var mylist = ArrayList<ItemMenu>()
+    var mylist = ArrayList<Item>()
 
-    fun list(): ArrayList<ItemMenu>{
+    fun list(): ArrayList<Item>{
         return mylist
     }
 

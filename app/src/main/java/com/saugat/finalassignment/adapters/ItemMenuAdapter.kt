@@ -4,16 +4,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.saugat.finalassignment.R
-import com.saugat.finalassignment.models.ItemMenu
-import de.hdodenhof.circleimageview.CircleImageView
+import com.saugat.finalassignment.models.Item
 
 class ItemMenuAdapter
-    (val lstItems : ArrayList<ItemMenu>, val context: Context)
+    (val lstItems : ArrayList<Item>, val context: Context)
     :RecyclerView.Adapter<ItemMenuAdapter.ItemViewHolder>()
 {
 

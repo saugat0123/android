@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.saugat.finalassignment.ItemData
 import com.saugat.finalassignment.R
 import com.saugat.finalassignment.adapters.ItemMenuAdapter
-import com.saugat.finalassignment.models.ItemMenu
+import com.saugat.finalassignment.models.Item
 
 
 class HomeFragment : Fragment() {
-    private val lstItems = ArrayList<ItemMenu>()
+    private val lstItems = ArrayList<Item>()
     private lateinit var recyclerViewDashboard: RecyclerView
     var i = 0
 
@@ -45,9 +45,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun loadItems() {
-        ItemData.get().list().add(ItemMenu(i++,"Chicken MoMo","Non-Veg",4.5F,200))
-        ItemData.get().list().add(ItemMenu(i++,"Veg MoMo","Veg",4F,120))
-        ItemData.get().list().add(ItemMenu(i++,"Jhol MoMo","Non-Veg",4.7F,250))
+        ItemData.get().list().add(Item(i++,"Chicken MoMo","Non-Veg",4.5F,200))
+        ItemData.get().list().add(Item(i++,"Veg MoMo","Veg",4F,120))
+        ItemData.get().list().add(Item(i++,"Jhol MoMo","Non-Veg",4.7F,250))
     }
 
 }
