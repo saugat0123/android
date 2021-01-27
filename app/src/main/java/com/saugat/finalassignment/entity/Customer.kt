@@ -14,5 +14,5 @@ data class Customer (
         )
 {
     @PrimaryKey(autoGenerate = true)
-    val customerId: Int = 0
+    var customerId: Int = 0
 }
