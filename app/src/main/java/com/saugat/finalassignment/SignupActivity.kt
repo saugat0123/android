@@ -41,8 +41,6 @@ class SignupActivity : AppCompatActivity() {
         btnSignup = findViewById(R.id.btnSignup)
 
         btnSignup.setOnClickListener{
-//            val intent = Intent(this,MainActivity::class.java)
-//            startActivity(intent)
             val fname = etFirstName.text.toString()
             val lname = etLastName.text.toString()
             val password = etPassword.text.toString()
@@ -60,7 +58,7 @@ class SignupActivity : AppCompatActivity() {
                 CoroutineScope(Dispatchers.IO).launch {
                     CustomerDB
                         .getInstance(this@SignupActivity)
-                        .getUserDAO()
+                        .getCustomerDAO()
                         .registerCustomer(customer)
                     // Switch to Main thread
                     withContext(Dispatchers.Main) {
@@ -76,6 +74,11 @@ class SignupActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+
+        tvLogin.setOnClickListener {
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }

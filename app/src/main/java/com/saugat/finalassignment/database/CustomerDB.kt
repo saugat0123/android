@@ -13,7 +13,7 @@ import com.saugat.finalassignment.entity.Customer
     exportSchema = false
 )
 abstract class CustomerDB : RoomDatabase() {
-    abstract fun getUserDAO(): CustomerDAO
+    abstract fun getCustomerDAO(): CustomerDAO
     companion object {
         @Volatile
         private var instance : CustomerDB? = null
