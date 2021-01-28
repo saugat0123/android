@@ -1,12 +1,11 @@
-package com.saugat.finalassignment
+package com.saugat.finalassignment.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import com.google.android.material.snackbar.Snackbar
+import com.saugat.finalassignment.R
 import com.saugat.finalassignment.database.CustomerDB
 import com.saugat.finalassignment.entity.Customer
 import kotlinx.coroutines.CoroutineScope
@@ -20,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var etPassword: EditText
     private lateinit var tvForgotPass: TextView
     private lateinit var tvSignup: TextView
+    private lateinit var rootLayout: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         etPassword = findViewById(R.id.etPassword)
         tvForgotPass = findViewById(R.id.tvForgotPass)
         tvSignup = findViewById(R.id.tvSignup)
+        rootLayout = findViewById(R.id.rootLayout)
 
         btnLogin.setOnClickListener {
             validate()
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         tvSignup.setOnClickListener {
-            val intent = Intent(this,SignupActivity::class.java)
+            val intent = Intent(this, SignupActivity::class.java)
             startActivity(intent)
         }
     }
@@ -58,6 +59,11 @@ class MainActivity : AppCompatActivity() {
                             .show()
                 }
             } else {
+//                val snackbar = Snackbar.make(rootLayout, "Login Successful", Snackbar.LENGTH_LONG)
+//                snackbar.setAction("Close") {
+//                    snackbar.dismiss()
+//                }
+//                snackbar.show()
                 startActivity(Intent(this@MainActivity, DashboardActivity::class.java))
             }
         }

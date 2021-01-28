@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.saugat.finalassignment.ItemData
+import com.saugat.finalassignment.ui.ItemData
 import com.saugat.finalassignment.R
 import com.saugat.finalassignment.adapters.ItemMenuAdapter
 import com.saugat.finalassignment.models.Item

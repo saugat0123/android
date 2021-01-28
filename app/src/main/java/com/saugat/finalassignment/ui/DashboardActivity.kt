@@ -1,10 +1,11 @@
-package com.saugat.finalassignment
+package com.saugat.finalassignment.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.saugat.finalassignment.R
 import com.saugat.finalassignment.fragments.HomeFragment
 import java.lang.Exception
 

@@ -1,4 +1,4 @@
-package com.saugat.finalassignment
+package com.saugat.finalassignment.ui
 
 import com.saugat.finalassignment.models.Item
 
