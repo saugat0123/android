@@ -3,6 +3,7 @@ package com.saugat.finalassignment.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.saugat.finalassignment.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -19,5 +20,15 @@ class SplashActivity : AppCompatActivity() {
             startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
             finish()
         }
+
+        getSavedPref()
+    }
+
+    private fun getSavedPref() {
+        val sharedPref = getSharedPreferences("MyPref", MODE_PRIVATE)
+        val email = sharedPref.getString("username", "")
+        val password = sharedPref.getString("password", "")
+//        Toast.makeText(this, "Username : $email and password : $password", Toast.LENGTH_SHORT)
+//                .show()
     }
 }
