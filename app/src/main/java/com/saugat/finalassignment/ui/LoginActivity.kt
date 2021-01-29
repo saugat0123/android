@@ -58,10 +58,25 @@ class LoginActivity : AppCompatActivity() {
                             .show()
                 }
             } else {
-
+                saveEmailPassword()
                 startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
             }
         }
+    }
+
+    private fun saveEmailPassword() {
+        val email = etEmail.text.toString()
+        val password = etPassword.text.toString()
+        val sharedPref = getSharedPreferences("MyPref", MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putString("email", email)
+        editor.putString("password", password)
+        editor.apply()
+//        Toast.makeText(
+//                this,
+//                "Email and password saved",
+//                Toast.LENGTH_SHORT
+//        ).show()
     }
 
     private fun validate(): Boolean {

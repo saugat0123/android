@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".ui.SplashScreenActivity">
+    tools:context=".ui.SplashActivity">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/taskmanager" />
+        android:src="@drawable/addtocart" />
 
     <TextView
         android:textSize="20sp"
