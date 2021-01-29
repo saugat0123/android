@@ -53,9 +53,10 @@
     <ImageButton
         android:id="@+id/btnDots"
         android:layout_width="49dp"
-        android:layout_height="40dp"
+        android:layout_height="41dp"
         android:scaleType="fitXY"
         android:scaleY="1.2"
+        android:backgroundTint="@color/teal_200"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.56"
         app:layout_constraintStart_toEndOf="@+id/itemImage"
@@ -109,12 +110,13 @@
 
     <ImageButton
         android:id="@+id/btnAddtoCart"
-        android:layout_width="48dp"
+        android:layout_width="49dp"
         android:layout_height="38dp"
         android:layout_marginTop="32dp"
         android:scaleType="fitXY"
         android:scaleY="1.4"
-        android:src="@drawable/add"
+        android:backgroundTint="@color/teal_200"
+        android:src="@drawable/addtocart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.549"
         app:layout_constraintStart_toEndOf="@+id/itemImage"
