@@ -21,14 +21,14 @@ class SplashActivity : AppCompatActivity() {
             finish()
         }
 
-        getSavedPref()
+        //getSavedPref()
+
     }
 
     private fun getSavedPref() {
         val sharedPref = getSharedPreferences("MyPref", MODE_PRIVATE)
         val email = sharedPref.getString("username", "")
         val password = sharedPref.getString("password", "")
-//        Toast.makeText(this, "Username : $email and password : $password", Toast.LENGTH_SHORT)
-//                .show()
+        val checked = sharedPref.getBoolean("checked",false)
     }
 }

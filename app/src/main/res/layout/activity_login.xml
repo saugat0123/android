@@ -49,10 +49,20 @@
         android:layout_height="50dp"
         tools:ignore="RtlCompat" />
 
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:text="Remember Me"
+        android:ems="10"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/btnLogin"
         android:text="LOGIN"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         app:cornerRadius = "20dp"
         android:backgroundTint="@color/purple_200"

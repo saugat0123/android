@@ -1,6 +1,7 @@
 package com.saugat.finalassignment.ui
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
@@ -20,6 +21,10 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var tvForgotPass: TextView
     private lateinit var tvSignup: TextView
     private lateinit var rootLayout: LinearLayout
+    private lateinit var checkBox: CheckBox
+    var isRemembered = false
+    private lateinit var sharedPref: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -30,6 +35,13 @@ class LoginActivity : AppCompatActivity() {
         tvForgotPass = findViewById(R.id.tvForgotPass)
         tvSignup = findViewById(R.id.tvSignup)
         rootLayout = findViewById(R.id.rootLayout)
+        checkBox = findViewById(R.id.checkBox)
+
+        sharedPref = getSharedPreferences("MyPref", MODE_PRIVATE)
+        isRemembered = sharedPref.getBoolean("checked", false)
+        if (isRemembered){
+            startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
+        }
 
         btnLogin.setOnClickListener {
             validate()
@@ -67,16 +79,12 @@ class LoginActivity : AppCompatActivity() {
     private fun saveEmailPassword() {
         val email = etEmail.text.toString()
         val password = etPassword.text.toString()
-        val sharedPref = getSharedPreferences("MyPref", MODE_PRIVATE)
-        val editor = sharedPref.edit()
+        val checked = checkBox.isChecked
+        val editor:SharedPreferences.Editor = sharedPref.edit()
         editor.putString("email", email)
         editor.putString("password", password)
+        editor.putBoolean("checked", checked)
         editor.apply()
-//        Toast.makeText(
-//                this,
-//                "Email and password saved",
-//                Toast.LENGTH_SHORT
-//        ).show()
     }
 
     private fun validate(): Boolean {
