@@ -4,21 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="center|top"
     android:orientation="vertical"
-    tools:context=".ui.SplashActivity">
+    tools:context=".ui.SplashActivity"
+    tools:ignore="UseCompoundDrawables">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/addtocart" />
+        android:src="@drawable/logo"
+        android:layout_marginTop="40dp"
+        tools:ignore="ContentDescription" />
 
-    <TextView
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        android:layout_width="match_parent"
+    <ImageView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="Task Manager 1.0" />
+        android:src="@drawable/namaste"
+        android:layout_marginTop="20dp"
+        tools:ignore="ContentDescription" />
+
+
 </LinearLayout>

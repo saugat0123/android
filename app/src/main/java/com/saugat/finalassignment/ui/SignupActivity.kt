@@ -52,8 +52,8 @@ class SignupActivity : AppCompatActivity() {
             val mail = etMail.text.toString()
 
             if (password != confirmPassword) {
-                etPassword.error = "Password does not match"
-                etPassword.requestFocus()
+                etConfirmPass.error = "Password does not match"
+                etConfirmPass.requestFocus()
                 return@setOnClickListener
             } else {
                 val customer = Customer(fname, lname, password, address, phone, mail)
@@ -78,7 +78,7 @@ class SignupActivity : AppCompatActivity() {
         }
 
         tvLogin.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
     }

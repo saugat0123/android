@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import com.google.android.material.snackbar.Snackbar
 import com.saugat.finalassignment.R
 import com.saugat.finalassignment.database.CustomerDB
 import com.saugat.finalassignment.entity.Customer
@@ -66,8 +67,11 @@ class LoginActivity : AppCompatActivity() {
                     .checkCustomer(email,password)
             if (customer == null) {
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(this@LoginActivity, "Invalid Email or Password!!", Toast.LENGTH_SHORT)
-                            .show()
+                    val snackbar = Snackbar.make(rootLayout, "Invalid Credentials!!", Snackbar.LENGTH_INDEFINITE)
+                    snackbar.setAction("Close") {
+                        snackbar.dismiss()
+                    }
+                    snackbar.show()
                 }
             } else {
                 saveEmailPassword()
@@ -90,10 +94,12 @@ class LoginActivity : AppCompatActivity() {
     private fun validate(): Boolean {
         if(etEmail.text.toString().isEmpty()){
             etEmail.error = "Blank Email"
+            etEmail.requestFocus()
             return false
         }
         else if(etPassword.text.toString().isEmpty()){
             etPassword.error = "Blank Password"
+            etPassword.requestFocus()
             return false
         }
         return true
