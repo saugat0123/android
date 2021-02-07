@@ -4,11 +4,14 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import com.google.android.material.snackbar.Snackbar
 import com.saugat.finalassignment.R
+import com.saugat.finalassignment.api.ServiceBuilder
 import com.saugat.finalassignment.database.CustomerDB
 import com.saugat.finalassignment.entity.Customer
+import com.saugat.finalassignment.repository.CustomerRepo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -59,23 +62,62 @@ class LoginActivity : AppCompatActivity() {
         val email = etEmail.text.toString()
         val password = etPassword.text.toString()
 
-        var customer: Customer?
+//        var customer: Customer?
+//        CoroutineScope(Dispatchers.IO).launch {
+//            customer = CustomerDB
+//                    .getInstance(this@LoginActivity)
+//                    .getCustomerDAO()
+//                    .checkCustomer(email,password)
+//            if (customer == null) {
+//                withContext(Dispatchers.Main) {
+//                    val snackbar = Snackbar.make(rootLayout, "Invalid Credentials!!", Snackbar.LENGTH_INDEFINITE)
+//                    snackbar.setAction("Close") {
+//                        snackbar.dismiss()
+//                    }
+//                    snackbar.show()
+//                }
+//            } else {
+//                saveEmailPassword()
+//                startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
+//            }
+//        }
+
         CoroutineScope(Dispatchers.IO).launch {
-            customer = CustomerDB
-                    .getInstance(this@LoginActivity)
-                    .getCustomerDAO()
-                    .checkCustomer(email,password)
-            if (customer == null) {
-                withContext(Dispatchers.Main) {
-                    val snackbar = Snackbar.make(rootLayout, "Invalid Credentials!!", Snackbar.LENGTH_INDEFINITE)
-                    snackbar.setAction("Close") {
-                        snackbar.dismiss()
-                    }
-                    snackbar.show()
-                }
-            } else {
+            try {
+                val repository = CustomerRepo()
+                val response = repository.loginCustomer(email, password)
+                if (response.success == true) {
                 saveEmailPassword()
-                startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
+                    ServiceBuilder.token = "Bearer " + response.token
+                    startActivity(
+                            Intent(
+                                    this@LoginActivity,
+                                    DashboardActivity::class.java
+                            )
+                    )
+                    finish()
+                } else {
+                    withContext(Dispatchers.Main) {
+                        val snack =
+                                Snackbar.make(
+                                        rootLayout,
+                                        "Invalid credentials",
+                                        Snackbar.LENGTH_LONG
+                                )
+                        snack.setAction("OK") {
+                            snack.dismiss()
+                        }
+                        snack.show()
+                    }
+                }
+
+            } catch (ex: Exception) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(
+                            this@LoginActivity,
+                            "Login error", Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         }
     }

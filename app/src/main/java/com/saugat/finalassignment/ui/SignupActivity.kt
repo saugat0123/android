@@ -3,12 +3,10 @@ package com.saugat.finalassignment.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.*
-import com.google.android.material.snackbar.Snackbar
 import com.saugat.finalassignment.R
-import com.saugat.finalassignment.database.CustomerDB
 import com.saugat.finalassignment.entity.Customer
+import com.saugat.finalassignment.repository.CustomerRepo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -55,23 +53,52 @@ class SignupActivity : AppCompatActivity() {
                 etConfirmPass.error = "Password does not match"
                 etConfirmPass.requestFocus()
                 return@setOnClickListener
-            } else {
-                val customer = Customer(fname, lname, password, address, phone, mail)
+            } else
+//            {
+//                val customer = Customer(fname, lname, password, address, phone, mail)
+//                CoroutineScope(Dispatchers.IO).launch {
+//                    CustomerDB
+//                        .getInstance(this@SignupActivity)
+//                        .getCustomerDAO()
+//                        .registerCustomer(customer)
+//                    // Switch to Main thread
+//                    withContext(Dispatchers.Main) {
+//                        val snackbar = Snackbar.make(rootLayout, "Welcome to RB family", Snackbar.LENGTH_INDEFINITE)
+//                        snackbar.setAction("Close") {
+//                            snackbar.dismiss()
+//                        }
+//                        snackbar.show()
+//
+//                        emptyForm()
+//
+//                    }
+//                }
+//            }
+
+            {
+                val customer =
+                        Customer(customerFirstName = fname, customerLastName = lname, customerPassword = password,
+                                customerAddress = address,customerPhone = phone,customerEmail = mail)
                 CoroutineScope(Dispatchers.IO).launch {
-                    CustomerDB
-                        .getInstance(this@SignupActivity)
-                        .getCustomerDAO()
-                        .registerCustomer(customer)
-                    // Switch to Main thread
-                    withContext(Dispatchers.Main) {
-                        val snackbar = Snackbar.make(rootLayout, "Welcome to RB family", Snackbar.LENGTH_INDEFINITE)
-                        snackbar.setAction("Close") {
-                            snackbar.dismiss()
+                    try {
+                        val customerRepo = CustomerRepo()
+                        val response = customerRepo.registerCustomer(customer)
+                        if(response.success == true){
+                            withContext(Dispatchers.Main) {
+                                Toast.makeText(
+                                        this@SignupActivity,
+                                        "Customer Registered", Toast.LENGTH_SHORT
+                                ).show()
+                                emptyForm()
+                            }
                         }
-                        snackbar.show()
-
-                        emptyForm()
-
+                    } catch (ex: Exception) {
+                        withContext(Dispatchers.Main) {
+                            Toast.makeText(
+                                    this@SignupActivity,
+                                    ex.toString(), Toast.LENGTH_LONG
+                            ).show()
+                        }
                     }
                 }
             }

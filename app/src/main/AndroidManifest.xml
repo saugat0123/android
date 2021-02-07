@@ -16,7 +16,9 @@
         android:label="RB"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.FinalAssignment">
+
         <activity android:name=".ui.SplashActivity" />
         <activity android:name=".ui.LoginActivity" />
         <activity

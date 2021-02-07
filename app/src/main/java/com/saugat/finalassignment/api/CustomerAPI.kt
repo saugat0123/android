@@ -20,5 +20,5 @@ interface CustomerAPI {
     suspend fun checkUser(
             @Field ("email") email: String? = null,
             @Field ("password") password: String? = null
-    )
+    ): Response<LoginResponse>
 }
