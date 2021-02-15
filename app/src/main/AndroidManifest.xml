@@ -12,7 +12,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/ic_crown2"
         android:label="RB"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"

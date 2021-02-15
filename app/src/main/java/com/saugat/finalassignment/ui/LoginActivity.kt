@@ -4,14 +4,11 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.*
 import com.google.android.material.snackbar.Snackbar
 import com.saugat.finalassignment.R
 import com.saugat.finalassignment.api.ServiceBuilder
-import com.saugat.finalassignment.database.CustomerDB
-import com.saugat.finalassignment.entity.Customer
-import com.saugat.finalassignment.repository.CustomerRepo
+import com.saugat.finalassignment.repository.UserRepo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -62,7 +59,7 @@ class LoginActivity : AppCompatActivity() {
         val email = etEmail.text.toString()
         val password = etPassword.text.toString()
 
-//        var customer: Customer?
+//        var customer: User?
 //        CoroutineScope(Dispatchers.IO).launch {
 //            customer = CustomerDB
 //                    .getInstance(this@LoginActivity)
@@ -84,8 +81,8 @@ class LoginActivity : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val repository = CustomerRepo()
-                val response = repository.loginCustomer(email, password)
+                val repository = UserRepo()
+                val response = repository.loginUser(email, password)
                 if (response.success == true) {
                 saveEmailPassword()
                     ServiceBuilder.token = "Bearer " + response.token
@@ -115,7 +112,7 @@ class LoginActivity : AppCompatActivity() {
                 withContext(Dispatchers.Main) {
                     Toast.makeText(
                             this@LoginActivity,
-                            "Login error", Toast.LENGTH_SHORT
+                            ex.toString(), Toast.LENGTH_SHORT
                     ).show()
                 }
             }

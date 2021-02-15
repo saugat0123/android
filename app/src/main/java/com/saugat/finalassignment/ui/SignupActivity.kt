@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 import com.saugat.finalassignment.R
-import com.saugat.finalassignment.entity.Customer
-import com.saugat.finalassignment.repository.CustomerRepo
+import com.saugat.finalassignment.entity.User
+import com.saugat.finalassignment.repository.UserRepo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -55,7 +55,7 @@ class SignupActivity : AppCompatActivity() {
                 return@setOnClickListener
             } else
 //            {
-//                val customer = Customer(fname, lname, password, address, phone, mail)
+//                val customer = User(fname, lname, password, address, phone, mail)
 //                CoroutineScope(Dispatchers.IO).launch {
 //                    CustomerDB
 //                        .getInstance(this@SignupActivity)
@@ -76,18 +76,18 @@ class SignupActivity : AppCompatActivity() {
 //            }
 
             {
-                val customer =
-                        Customer(customerFirstName = fname, customerLastName = lname, customerPassword = password,
-                                customerAddress = address,customerPhone = phone,customerEmail = mail)
+                val user =
+                        User(firstName = fname, lastName = lname, password = password,
+                                address = address,phone = phone,email = mail)
                 CoroutineScope(Dispatchers.IO).launch {
                     try {
-                        val customerRepo = CustomerRepo()
-                        val response = customerRepo.registerCustomer(customer)
+                        val userRepo = UserRepo()
+                        val response = userRepo.registerUser(user)
                         if(response.success == true){
                             withContext(Dispatchers.Main) {
                                 Toast.makeText(
                                         this@SignupActivity,
-                                        "Customer Registered", Toast.LENGTH_SHORT
+                                        "User Registered", Toast.LENGTH_SHORT
                                 ).show()
                                 emptyForm()
                             }
