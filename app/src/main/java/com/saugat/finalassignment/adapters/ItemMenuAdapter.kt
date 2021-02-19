@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.saugat.finalassignment.R
+import de.hdodenhof.circleimageview.CircleImageView
 
 class ItemMenuAdapter(private val lstItems: ArrayList<com.saugat.finalassignment.models.Item>, val context: Context)
     :RecyclerView.Adapter<ItemMenuAdapter.ItemViewHolder>()
@@ -17,7 +18,7 @@ class ItemMenuAdapter(private val lstItems: ArrayList<com.saugat.finalassignment
         val tvItemType: TextView = view.findViewById(R.id.tvItemType)
         val tvItemRating: TextView = view.findViewById(R.id.tvItemRating)
         val tvItemPrice: TextView = view.findViewById(R.id.tvItemPrice)
-        //val itemImage: CircleImageView = view.findViewById(R.id.itemImage)
+        val itemImage: CircleImageView = view.findViewById(R.id.itemImage)
 
     }
 
