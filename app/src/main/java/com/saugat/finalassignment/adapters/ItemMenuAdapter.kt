@@ -44,9 +44,6 @@ class ItemMenuAdapter
         holder.tvItemRating.text = item.itemRating.toString()
         holder.tvItemPrice.text = item.itemPrice.toString()
 
-        Glide.with(context)
-            .load("https://chewnbrewjk.com/wp-content/uploads/2017/07/chicken-momos-1.jpg")
-            .into(holder.itemImage)
     }
 
     override fun getItemCount(): Int {
