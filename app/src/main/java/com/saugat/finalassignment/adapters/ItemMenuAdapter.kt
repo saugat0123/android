@@ -6,30 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.saugat.finalassignment.R
-import com.saugat.finalassignment.models.Item
+import com.saugat.finalassignment.entity.Item
 import de.hdodenhof.circleimageview.CircleImageView
 
 class ItemMenuAdapter
-    (val lstItems : ArrayList<Item>, val context: Context)
+    (private val lstItems : ArrayList<Item>, val context: Context)
     :RecyclerView.Adapter<ItemMenuAdapter.ItemViewHolder>()
 {
 
     class ItemViewHolder(view: View): RecyclerView.ViewHolder(view){
-        val tvItemName: TextView
-        val tvItemType: TextView
-        val tvItemRating: TextView
-        val tvItemPrice: TextView
-        val itemImage: CircleImageView
+        val tvItemName: TextView = view.findViewById(R.id.tvItemName)
+        val tvItemType: TextView = view.findViewById(R.id.tvItemType)
+        val tvItemRating: TextView = view.findViewById(R.id.tvItemRating)
+        val tvItemPrice: TextView = view.findViewById(R.id.tvItemPrice)
+        //val itemImage: CircleImageView = view.findViewById(R.id.itemImage)
 
-        init {
-            tvItemName = view.findViewById(R.id.tvItemName)
-            tvItemType = view.findViewById(R.id.tvItemType)
-            tvItemRating = view.findViewById(R.id.tvItemRating)
-            tvItemPrice = view.findViewById(R.id.tvItemPrice)
-            itemImage = view.findViewById(R.id.itemImage)
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
