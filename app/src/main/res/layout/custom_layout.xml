@@ -1,7 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/ic_background"
+    android:orientation="vertical"
+    android:padding="31dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bahnschrift_regular"
+        android:text="Hi, User!"
+        android:textColor="#171616"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.506" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_account" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/searchbar"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:fontFamily="@font/bahnschrift_regular"
+        android:hint="Search foods..."
+        android:inputType="textPersonName"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+<!--    <ImageView-->
+<!--        android:id="@+id/img_soup"-->
+<!--        android:layout_width="0dp"-->
+<!--        app:layout_constraintHorizontal_weight="1"-->
+<!--        android:layout_height="93dp"-->
+<!--        android:layout_marginTop="36dp"-->
+<!--        android:background="@drawable/custom_categories"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"-->
+<!--        app:srcCompat="@drawable/ic_soup"-->
+<!--        tools:ignore="MissingConstraints" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/img_chicken"-->
+<!--        android:layout_width="0dp"-->
+<!--        app:layout_constraintHorizontal_weight="1"-->
+<!--        android:layout_height="93dp"-->
+<!--        android:layout_marginTop="36dp"-->
+<!--        android:background="@drawable/custom_categories"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/img_soup"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"-->
+<!--        app:srcCompat="@drawable/ic_chicken" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView7"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="93dp"-->
+<!--        android:layout_marginTop="36dp"-->
+<!--        android:background="@drawable/custom_categories"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/img_chicken"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"-->
+<!--        app:srcCompat="@drawable/ic_vegetarian" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/img_drinks"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="93dp"-->
+<!--        android:background="@drawable/custom_categories"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/imageView7"-->
+<!--        app:srcCompat="@drawable/ic_drinks"-->
+<!--        tools:layout_editor_absoluteY="191dp"-->
+<!--        tools:ignore="MissingConstraints" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_categories"
+        android:layout_marginTop="22dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/soup"
+            android:layout_width="93dp"
+            android:layout_height="93dp"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/custom_categories"
+            android:contentDescription="Soup"
+            android:src="@drawable/ic_soup"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/tvSoup"
+            android:layout_below="@+id/soup"
+            android:text="Soup"
+            android:textAlignment="center"
+            android:layout_width="93dp"
+            android:layout_height="wrap_content" />
+
+        <ImageButton
+            android:id="@+id/vege"
+            android:layout_width="93dp"
+            android:layout_height="93dp"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@+id/soup"
+            android:background="@drawable/custom_categories"
+            android:contentDescription="Soup"
+            android:src="@drawable/ic_vegetarian"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/tvVege"
+            android:layout_alignBottom="@id/tvSoup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vege" />
+
+        <ImageButton
+            android:id="@+id/chicken"
+            android:layout_width="93dp"
+            android:layout_height="93dp"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@+id/vege"
+            android:background="@drawable/custom_categories"
+            android:contentDescription="Soup"
+            android:src="@drawable/ic_chicken"
+            tools:ignore="HardcodedText" />
+
+<!--        <ImageView-->
+<!--            android:id="@+id/drink"-->
+<!--            android:layout_width="93dp"-->
+<!--            android:layout_height="93dp"-->
+<!--            android:layout_toEndOf="@+id/chicken"-->
+<!--            android:background="@drawable/custom_categories"-->
+<!--            android:contentDescription="Soup"-->
+<!--            android:src="@drawable/ic_vegetarian"-->
+<!--            tools:ignore="HardcodedText" />-->
+
+    </RelativeLayout>
 
 </LinearLayout>

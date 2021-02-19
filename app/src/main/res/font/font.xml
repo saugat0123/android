@@ -6,4 +6,11 @@
         android:fontWeight="400"
         android:font="@font/meticula"
         tools:targetApi="o" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/bahnschrift_regular"
+        tools:targetApi="o"
+        />
+
 </font-family>
