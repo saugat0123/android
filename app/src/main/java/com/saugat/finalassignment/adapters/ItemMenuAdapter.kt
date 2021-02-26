@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.saugat.finalassignment.R
+import com.saugat.finalassignment.entity.Item
 import de.hdodenhof.circleimageview.CircleImageView
 
-class ItemMenuAdapter(private val lstItems: ArrayList<com.saugat.finalassignment.models.Item>, val context: Context)
+class ItemMenuAdapter(private val lstItems: ArrayList<Item>,
+                      val context: Context)
     :RecyclerView.Adapter<ItemMenuAdapter.ItemViewHolder>()
 {
 
