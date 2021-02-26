@@ -7,8 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.saugat.finalassignment.R
+import com.saugat.finalassignment.adapters.ItemMenuAdapter
+import com.saugat.finalassignment.entity.Item
+import com.saugat.finalassignment.repository.ItemRepo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -40,7 +44,16 @@ class HomeFragment : Fragment() {
     private fun loadItems() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                //val item =
+                val itemRepo = ItemRepo()
+                val response = itemRepo.getAllItems()
+                if (response.success == true){
+                    val lstItems = response.data
+                    withContext(Dispatchers.Main){
+                        val adapter = context?.let { ItemMenuAdapter(lstItems as ArrayList<Item>, it) }
+                        recyclerViewDashboard.layoutManager = LinearLayoutManager(context)
+                        recyclerViewDashboard.adapter = adapter
+                    }
+                }
             } catch (ex: Exception) {
                 withContext(Dispatchers.Main) {
                     Toast.makeText(activity,
