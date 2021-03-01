@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 import com.saugat.finalassignment.R
+import com.saugat.finalassignment.db.RB_DB
 import com.saugat.finalassignment.entity.User
+import com.saugat.finalassignment.entity.UserLocal
 import com.saugat.finalassignment.repository.UserRepo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -79,11 +81,14 @@ class SignupActivity : AppCompatActivity() {
                 val user =
                         User(firstName = fname, lastName = lname, password = password,
                                 address = address,phone = phone,email = mail)
+
+                val userLocal = UserLocal(fname,lname,password,address,phone,mail)
                 CoroutineScope(Dispatchers.IO).launch {
                     try {
                         val userRepo = UserRepo()
                         val response = userRepo.registerUser(user)
                         if(response.success == true){
+                            RB_DB.getInstance(this@SignupActivity).getUserDAO().registerUser(userLocal)
                             withContext(Dispatchers.Main) {
                                 Toast.makeText(
                                         this@SignupActivity,

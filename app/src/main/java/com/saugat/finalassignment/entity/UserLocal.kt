@@ -5,8 +5,8 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
-data class User (
+@Entity
+data class UserLocal (
         var firstName : String? = null,
         var lastName : String? = null,
         var password : String? = null,
@@ -14,3 +14,7 @@ data class User (
         var phone : String? = null,
         var email : String? = null,
         )
+{
+        @PrimaryKey(autoGenerate = true)
+        var userId: Int = 0
+}
