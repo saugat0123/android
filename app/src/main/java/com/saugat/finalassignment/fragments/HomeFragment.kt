@@ -21,6 +21,7 @@ import kotlinx.coroutines.withContext
 
 class HomeFragment : Fragment() {
     private lateinit var recyclerViewDashboard: RecyclerView
+    var i =0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
