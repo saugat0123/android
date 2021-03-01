@@ -56,7 +56,7 @@ class AccountFragment : Fragment() {
                         }
                     }
             withContext(Dispatchers.Main){
-                recyclerViewProfile.adapter =  ProfileAdapter(lstUser)
+               // recyclerViewProfile.adapter =  ProfileAdapter(lstUser)
                 recyclerViewProfile.layoutManager = LinearLayoutManager(activity)
             }
         }

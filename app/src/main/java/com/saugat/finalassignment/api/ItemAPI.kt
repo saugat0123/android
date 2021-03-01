@@ -3,11 +3,10 @@ package com.saugat.finalassignment.api
 import com.saugat.finalassignment.entity.Item
 import com.saugat.finalassignment.response.AddItemResponse
 import com.saugat.finalassignment.response.GetAlItemsResponse
+import com.saugat.finalassignment.response.ImageResponse
+import okhttp3.MultipartBody
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ItemAPI {
 
@@ -21,4 +20,12 @@ interface ItemAPI {
     suspend fun getAllItems(
             @Header ("Authorization") token: String,
     ):Response<GetAlItemsResponse>
+
+    @Multipart
+    @PUT("food/{id}/photo")
+    suspend fun uploadImage(
+        @Header("Authorization") token: String,
+        @Path("id") id: String,
+        @Part file: MultipartBody.Part
+    ): Response<ImageResponse>
 }

@@ -6,6 +6,8 @@ import com.saugat.finalassignment.api.ServiceBuilder
 import com.saugat.finalassignment.entity.Item
 import com.saugat.finalassignment.response.AddItemResponse
 import com.saugat.finalassignment.response.GetAlItemsResponse
+import com.saugat.finalassignment.response.ImageResponse
+import okhttp3.MultipartBody
 
 
 class ItemRepo: MyApiRequest() {
@@ -22,6 +24,13 @@ class ItemRepo: MyApiRequest() {
     suspend fun getAllItems(): GetAlItemsResponse{
         return apiRequest {
             itemAPI.getAllItems(ServiceBuilder.token!!)
+        }
+    }
+
+    suspend fun uploadImage(id: String, body: MultipartBody.Part)
+            : ImageResponse {
+        return apiRequest {
+            itemAPI.uploadImage(ServiceBuilder.token!!, id, body)
         }
     }
 }

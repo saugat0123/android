@@ -7,6 +7,6 @@ import androidx.room.PrimaryKey
 data class Item (
     val itemName: String? = null,
     val itemType: String? = null,
-    val itemRating: Float? = null,
+    val itemRating: String? = null,
     val itemPrice: Int? = null
 )

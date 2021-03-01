@@ -21,7 +21,7 @@
         android:title="Account" />
 
     <item
-        android:id="@+id/more"
+        android:id="@+id/add"
         android:icon="@drawable/more"
         android:title="Add Item" />
 </menu>

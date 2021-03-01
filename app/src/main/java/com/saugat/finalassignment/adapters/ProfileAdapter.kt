@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.saugat.finalassignment.R
+import com.saugat.finalassignment.entity.UserLocal
 
-class ProfileAdapter(private val lstUserLocal: Unit?) : RecyclerView.Adapter<ProfileAdapter.ProfileViewHolder>() {
+class ProfileAdapter(private val lstUserLocal: MutableList<UserLocal>) : RecyclerView.Adapter<ProfileAdapter.ProfileViewHolder>() {
 
     class ProfileViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val fname: TextView = view.findViewById(R.id.etFirstName)
