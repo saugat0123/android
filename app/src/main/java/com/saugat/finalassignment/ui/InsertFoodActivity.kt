@@ -95,14 +95,14 @@ class InsertFoodActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val itemRepository = ItemRepo()
-                val response = itemRepository.addStudent(food)
+                val response = itemRepository.addItem(food)
                 if(response.success == true){
                     if (imageUrl != null){
                         uploadImage(response.data!!._id!!)
                     }
                     withContext(Dispatchers.Main) {
                         Toast.makeText(
-                            this@AddStudentActivity,
+                            this@InsertFoodActivity,
                             "Add Student bhayo", Toast.LENGTH_SHORT
                         ).show()
                     }
@@ -110,7 +110,7 @@ class InsertFoodActivity : AppCompatActivity() {
             } catch (ex: Exception) {
                 withContext(Dispatchers.Main) {
                     Toast.makeText(
-                        this@AddStudentActivity,
+                        this@InsertFoodActivity,
                         ex.toString(), Toast.LENGTH_SHORT
                     ).show()
                 }

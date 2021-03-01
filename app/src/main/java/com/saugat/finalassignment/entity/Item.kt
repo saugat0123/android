@@ -5,6 +5,7 @@ import androidx.room.PrimaryKey
 
 
 data class Item (
+    var _id: String? = null,
     val itemName: String? = null,
     val itemType: String? = null,
     val itemRating: String? = null,

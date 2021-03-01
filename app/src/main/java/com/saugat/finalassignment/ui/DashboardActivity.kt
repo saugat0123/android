@@ -33,7 +33,7 @@ class DashboardActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.home -> currentFragment(HomeFragment())
                 R.id.account -> currentFragment(AccountFragment())
-                R.id.add -> currentFragment(AddItemFragment())
+
             }
             true
         }
