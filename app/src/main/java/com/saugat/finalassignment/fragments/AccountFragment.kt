@@ -33,6 +33,8 @@ class AccountFragment : Fragment() {
         btnLogout = view.findViewById(R.id.btnLogout)
         sharedPref = requireContext().getSharedPreferences("MyPref",MODE_PRIVATE)
 
+
+
         btnLogout.setOnClickListener {
             val editor: SharedPreferences.Editor = sharedPref.edit()
             editor.clear()
