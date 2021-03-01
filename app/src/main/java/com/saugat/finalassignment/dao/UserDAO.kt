@@ -12,6 +12,6 @@ interface UserDAO {
     @Insert
     suspend fun registerUser(userLocal: UserLocal)
 
-    @Query("SELECT * FROM UserLocal")
-    suspend fun getUser() : List<User>
+    @Query("SELECT * FROM UserLocal where email=(:email)")
+    suspend fun getUser(email: String) : UserLocal
 }

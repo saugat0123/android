@@ -8,6 +8,8 @@ import android.widget.*
 import com.google.android.material.snackbar.Snackbar
 import com.saugat.finalassignment.R
 import com.saugat.finalassignment.api.ServiceBuilder
+import com.saugat.finalassignment.fragments.AccountFragment
+import com.saugat.finalassignment.fragments.HomeFragment
 import com.saugat.finalassignment.repository.UserRepo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -55,6 +57,10 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun passData(){
+
+    }
+
     private fun login() {
         val email = etEmail.text.toString()
         val password = etPassword.text.toString()
@@ -78,6 +84,14 @@ class LoginActivity : AppCompatActivity() {
 //                startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
 //            }
 //        }
+
+//        intent.putExtra("emailOfUser", email)
+
+        val bundle = Bundle()
+        bundle.putString("emailOfUser",email)
+
+        val transaction = this.supportFragmentManager.beginTransaction()
+        AccountFragment().arguments = bundle
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
