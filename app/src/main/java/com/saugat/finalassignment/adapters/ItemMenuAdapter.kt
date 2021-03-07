@@ -1,15 +1,20 @@
 package com.saugat.finalassignment.adapters
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.saugat.finalassignment.R
 import com.saugat.finalassignment.api.ServiceBuilder
 import com.saugat.finalassignment.entity.Item
+import com.saugat.finalassignment.fragments.CartFragment
 import de.hdodenhof.circleimageview.CircleImageView
 
 class ItemMenuAdapter(private val lstItems: ArrayList<Item>,
@@ -23,6 +28,7 @@ class ItemMenuAdapter(private val lstItems: ArrayList<Item>,
         val tvItemRating: TextView = view.findViewById(R.id.tvItemRating)
         val tvItemPrice: TextView = view.findViewById(R.id.tvItemPrice)
         val itemImage: CircleImageView = view.findViewById(R.id.itemImage)
+        val btnAddtoCart: ImageButton = view.findViewById(R.id.btnAddtoCart)
 
     }
 
@@ -38,12 +44,23 @@ class ItemMenuAdapter(private val lstItems: ArrayList<Item>,
         holder.tvItemRating.text = item.itemRating.toString()
         holder.tvItemPrice.text = item.itemPrice.toString()
 
+
         val imagePath = ServiceBuilder.loadImagePath() + item.photo
         if (!item.photo.equals("no-photo.jpg")) {
             Glide.with(context)
                     .load(imagePath)
                     .fitCenter()
                     .into(holder.itemImage)
+        }
+
+        holder.btnAddtoCart.setOnClickListener {
+
+            val intent = Intent(context, CartFragment::class.java)
+            var bundle = Bundle()
+            bundle.putParcelable("item", item)
+            intent.putExtra("myBundle", bundle)
+            Toast.makeText(context, "${item.itemName} added to Cart!!", Toast.LENGTH_SHORT).show()
+            context.startActivity(intent)
         }
 
     }

@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.saugat.finalassignment.R
-import com.saugat.finalassignment.adapters.ProfileAdapter
+import com.saugat.finalassignment.adapters.CartAdapter
 import com.saugat.finalassignment.entity.User
 import com.saugat.finalassignment.repository.UserRepo
 import com.saugat.finalassignment.ui.LoginActivity
@@ -71,7 +71,7 @@ class AccountFragment : Fragment() {
                     // Put all the student details in lstStudents
                     val lstUser = response.data
                     withContext(Dispatchers.Main){
-                        val adapter = context?.let { ProfileAdapter(lstUser as ArrayList<User>, it) }
+                        val adapter = context?.let { CartAdapter(lstUser as ArrayList<User>, it) }
                         recyclerViewProfile.layoutManager = LinearLayoutManager(activity)
                         recyclerViewProfile.adapter = adapter
                     }

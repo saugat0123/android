@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-
+    <uses-feature android:name="android.hardware.type.watch" />
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -22,22 +22,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalAssignment"
         android:usesCleartextTraffic="true">
-<!--        <uses-library-->
-<!--            android:name="com.google.android.wearable"-->
-<!--            android:required="true" />-->
+        <uses-library
+            android:name="com.google.android.wearable"
+            android:required="true" />
 
-<!--        &lt;!&ndash;-->
-<!--               Set to true if your app is Standalone, that is, it does not require the handheld-->
-<!--               app to run.-->
-<!--        &ndash;&gt;-->
-<!--        <meta-data-->
-<!--            android:name="com.google.android.wearable.standalone"-->
-<!--            android:value="true" />-->
+        <!--
+               Set to true if your app is Standalone, that is, it does not require the handheld
+               app to run.
+        -->
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
 
+        <activity
+            android:name=".ui.CartActivity"
+            android:label="@string/title_activity_cart"></activity>
+        <!-- <uses-library -->
+        <!-- android:name="com.google.android.wearable" -->
+        <!-- android:required="true" /> -->
+        <!-- &lt;!&ndash; -->
+        <!-- Set to true if your app is Standalone, that is, it does not require the handheld -->
+        <!-- app to run. -->
+        <!-- &ndash;&gt; -->
+        <!-- <meta-data -->
+        <!-- android:name="com.google.android.wearable.standalone" -->
+        <!-- android:value="true" /> -->
         <activity
             android:name=".ui.InsertFoodActivity"
             android:label="@string/title_activity_insert_food" />
-
         <activity android:name=".ui.SplashActivity" />
         <activity android:name=".ui.LoginActivity" />
         <activity
