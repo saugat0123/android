@@ -103,7 +103,7 @@ class InsertFoodActivity : AppCompatActivity() {
                     withContext(Dispatchers.Main) {
                         Toast.makeText(
                             this@InsertFoodActivity,
-                            "Add Student bhayo", Toast.LENGTH_SHORT
+                            "Food Item Added", Toast.LENGTH_SHORT
                         ).show()
                     }
                 }
@@ -138,7 +138,7 @@ class InsertFoodActivity : AppCompatActivity() {
                     }
                 } catch (ex: Exception) {
                     withContext(Dispatchers.Main) {
-                        Log.d("Mero Error ", ex.localizedMessage)
+                        Log.d("My Error ", ex.localizedMessage)
                         Toast.makeText(
                             this@InsertFoodActivity,
                             ex.localizedMessage,

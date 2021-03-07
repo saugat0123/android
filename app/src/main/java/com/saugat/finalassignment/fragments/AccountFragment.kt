@@ -8,12 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.saugat.finalassignment.R
 import com.saugat.finalassignment.adapters.ProfileAdapter
-import com.saugat.finalassignment.db.RB_DB
+import com.saugat.finalassignment.entity.User
+import com.saugat.finalassignment.repository.UserRepo
 import com.saugat.finalassignment.ui.LoginActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,6 +23,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
+@Suppress("CAST_NEVER_SUCCEEDS")
 class AccountFragment : Fragment() {
 
     private lateinit var btnLogout: Button
@@ -43,23 +46,11 @@ class AccountFragment : Fragment() {
         recyclerViewProfile = view.findViewById(R.id.recyclerViewProfile)
         sharedPref = requireContext().getSharedPreferences("MyPref",MODE_PRIVATE)
 
-//        arguments?.getString("emailOfUser")
-        val args = arguments
-        val email = args?.getString("emailOfUser")
+////        arguments?.getString("emailOfUser")
+//        val args = arguments
+//        val email = args?.getString("emailOfUser")
 
-        CoroutineScope(Dispatchers.IO).launch{
-            val lstUser =
-                    context?.let {
-                        if (email != null) {
-                            RB_DB.getInstance(it)
-                                    .getUserDAO().getUser(email)
-                        }
-                    }
-            withContext(Dispatchers.Main){
-               // recyclerViewProfile.adapter =  ProfileAdapter(lstUser)
-                recyclerViewProfile.layoutManager = LinearLayoutManager(activity)
-            }
-        }
+        loadProfile()
 
         btnLogout.setOnClickListener {
             val editor: SharedPreferences.Editor = sharedPref.edit()
@@ -69,5 +60,28 @@ class AccountFragment : Fragment() {
         }
 
         return view
+    }
+
+    private fun loadProfile() {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val userRepo = UserRepo()
+                val response = userRepo.getMe()
+                if(response.success==true){
+                    // Put all the student details in lstStudents
+                    val lstUser = response.data
+                    withContext(Dispatchers.Main){
+                        val adapter = context?.let { ProfileAdapter(lstUser as ArrayList<User>, it) }
+                        recyclerViewProfile.layoutManager = LinearLayoutManager(activity)
+                        recyclerViewProfile.adapter = adapter
+                    }
+                }
+            }catch(ex : Exception){
+                withContext(Dispatchers.Main){
+                    Toast.makeText(activity,
+                            "Error : ${ex.toString()}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 }

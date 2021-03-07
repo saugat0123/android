@@ -1,12 +1,10 @@
 package com.saugat.finalassignment.api
 
 import com.saugat.finalassignment.entity.User
+import com.saugat.finalassignment.response.GetUserProfileResponse
 import com.saugat.finalassignment.response.LoginResponse
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface UserAPI {
 
@@ -23,4 +21,9 @@ interface UserAPI {
             @Field ("email") email: String,
             @Field ("password") password: String
     ): Response<LoginResponse>
+
+    @GET("/me")
+    suspend fun getMe(
+            @Header ("Authorization") token: String,
+    ): Response<GetUserProfileResponse>
 }

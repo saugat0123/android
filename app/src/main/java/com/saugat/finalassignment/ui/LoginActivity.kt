@@ -87,11 +87,11 @@ class LoginActivity : AppCompatActivity() {
 
 //        intent.putExtra("emailOfUser", email)
 
-        val bundle = Bundle()
-        bundle.putString("emailOfUser",email)
-
-        val transaction = this.supportFragmentManager.beginTransaction()
-        AccountFragment().arguments = bundle
+//        val bundle = Bundle()
+//        bundle.putString("emailOfUser",email)
+//
+//        val transaction = this.supportFragmentManager.beginTransaction()
+//        AccountFragment().arguments = bundle
 
         CoroutineScope(Dispatchers.IO).launch {
             try {

@@ -22,7 +22,7 @@ interface ItemAPI {
     ):Response<GetAlItemsResponse>
 
     @Multipart
-    @PUT("food/{id}/photo")
+    @PUT("item/{id}/photo")
     suspend fun uploadImage(
         @Header("Authorization") token: String,
         @Path("id") id: String,

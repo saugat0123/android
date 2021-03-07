@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.saugat.finalassignment.R
+import com.saugat.finalassignment.api.ServiceBuilder
 import com.saugat.finalassignment.entity.Item
 import de.hdodenhof.circleimageview.CircleImageView
 
@@ -35,6 +37,14 @@ class ItemMenuAdapter(private val lstItems: ArrayList<Item>,
         holder.tvItemType.text = item.itemType
         holder.tvItemRating.text = item.itemRating.toString()
         holder.tvItemPrice.text = item.itemPrice.toString()
+
+        val imagePath = ServiceBuilder.loadImagePath() + item.photo
+        if (!item.photo.equals("no-photo.jpg")) {
+            Glide.with(context)
+                    .load(imagePath)
+                    .fitCenter()
+                    .into(holder.itemImage)
+        }
 
     }
 

@@ -1,14 +1,16 @@
 package com.saugat.finalassignment.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.saugat.finalassignment.R
-import com.saugat.finalassignment.entity.UserLocal
+import com.saugat.finalassignment.entity.User
 
-class ProfileAdapter(private val lstUserLocal: MutableList<UserLocal>) : RecyclerView.Adapter<ProfileAdapter.ProfileViewHolder>() {
+class ProfileAdapter(private val lstUser: ArrayList<User>, val context: Context)
+    : RecyclerView.Adapter<ProfileAdapter.ProfileViewHolder>() {
 
     class ProfileViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val fname: TextView = view.findViewById(R.id.etFirstName)
@@ -25,15 +27,15 @@ class ProfileAdapter(private val lstUserLocal: MutableList<UserLocal>) : Recycle
     }
 
     override fun onBindViewHolder(holder: ProfileViewHolder, position: Int) {
-        val userlocal = lstUserLocal[position]
-        holder.fname.text = userlocal.firstName
-        holder.lname.text = userlocal.lastName
-        holder.phone.text = userlocal.phone
-        holder.address.text = userlocal.address
-        holder.email.text = userlocal.email
+        val user = lstUser[position]
+        holder.fname.text = user.firstName
+        holder.lname.text = user.lastName
+        holder.phone.text = user.phone
+        holder.address.text = user.address
+        holder.email.text = user.email
     }
 
     override fun getItemCount(): Int {
-        return lstUserLocal.size
+        return lstUser.size
     }
 }

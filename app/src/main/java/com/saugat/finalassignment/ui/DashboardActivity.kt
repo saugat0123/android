@@ -1,5 +1,6 @@
 package com.saugat.finalassignment.ui
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -33,6 +34,7 @@ class DashboardActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.home -> currentFragment(HomeFragment())
                 R.id.account -> currentFragment(AccountFragment())
+                R.id.add -> startActivity(Intent(this,InsertFoodActivity::class.java))
 
             }
             true
