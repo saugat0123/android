@@ -27,6 +27,24 @@ class ItemRepo: MyApiRequest() {
         }
     }
 
+    suspend fun getDrinks(): GetAlItemsResponse{
+        return apiRequest {
+            itemAPI.getDrinks(ServiceBuilder.token!!)
+        }
+    }
+
+    suspend fun getVege(): GetAlItemsResponse{
+        return apiRequest {
+            itemAPI.getVege(ServiceBuilder.token!!)
+        }
+    }
+
+    suspend fun getNonVege(): GetAlItemsResponse{
+        return apiRequest {
+            itemAPI.getNonVege(ServiceBuilder.token!!)
+        }
+    }
+
     suspend fun uploadImage(id: String, body: MultipartBody.Part)
             : ImageResponse {
         return apiRequest {

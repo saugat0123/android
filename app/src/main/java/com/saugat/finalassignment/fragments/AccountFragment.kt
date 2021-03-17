@@ -63,25 +63,25 @@ class AccountFragment : Fragment() {
     }
 
     private fun loadProfile() {
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                val userRepo = UserRepo()
-                val response = userRepo.getMe()
-                if(response.success==true){
-                    // Put all the student details in lstStudents
-                    val lstUser = response.data
-                    withContext(Dispatchers.Main){
-                        val adapter = context?.let { CartAdapter(lstUser as ArrayList<User>, it) }
-                        recyclerViewProfile.layoutManager = LinearLayoutManager(activity)
-                        recyclerViewProfile.adapter = adapter
-                    }
-                }
-            }catch(ex : Exception){
-                withContext(Dispatchers.Main){
-                    Toast.makeText(activity,
-                            "Error : ${ex.toString()}", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
+//        CoroutineScope(Dispatchers.IO).launch {
+//            try {
+//                val userRepo = UserRepo()
+//                val response = userRepo.getMe()
+//                if(response.success==true){
+//                    // Put all the student details in lstStudents
+//                    val lstUser = response.data
+//                    withContext(Dispatchers.Main){
+//                        val adapter = context?.let { CartAdapter(lstUser as ArrayList<User>, it) }
+//                        recyclerViewProfile.layoutManager = LinearLayoutManager(activity)
+//                        recyclerViewProfile.adapter = adapter
+//                    }
+//                }
+//            }catch(ex : Exception){
+//                withContext(Dispatchers.Main){
+//                    Toast.makeText(activity,
+//                            "Error : ${ex.toString()}", Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//        }
     }
 }

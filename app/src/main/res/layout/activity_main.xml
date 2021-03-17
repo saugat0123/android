@@ -44,6 +44,7 @@
         android:drawablePadding="10dp"
         android:drawableTint="@color/purple_200"
         android:drawableStart="@drawable/ic_lock"
+        android:inputType="textPassword"
         android:textSize="16sp"
         android:layout_width="match_parent"
         android:layout_height="50dp"

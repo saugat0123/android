@@ -28,6 +28,7 @@ class CartAdapter(private val lstFood: ArrayList<Item>, val context: Context)
         val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.cart_layout, parent, false)
         return CartViewHolder(view)
+
     }
 
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {

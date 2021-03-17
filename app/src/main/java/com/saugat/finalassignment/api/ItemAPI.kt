@@ -21,6 +21,22 @@ interface ItemAPI {
             @Header ("Authorization") token: String,
     ):Response<GetAlItemsResponse>
 
+    @GET ("item/drink")
+    suspend fun getDrinks(
+            @Header ("Authorization") token: String,
+    ):Response<GetAlItemsResponse>
+
+    @GET ("item/vege")
+    suspend fun getVege(
+            @Header ("Authorization") token: String,
+    ):Response<GetAlItemsResponse>
+
+    @GET ("item/non-vege")
+    suspend fun getNonVege(
+            @Header ("Authorization") token: String,
+    ):Response<GetAlItemsResponse>
+
+
     @Multipart
     @PUT("item/{id}/photo")
     suspend fun uploadImage(
