@@ -2,7 +2,9 @@ package com.saugat.finalassignment.api
 
 import com.saugat.finalassignment.entity.User
 import com.saugat.finalassignment.response.GetUserProfileResponse
+import com.saugat.finalassignment.response.ImageResponse
 import com.saugat.finalassignment.response.LoginResponse
+import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -26,4 +28,12 @@ interface UserAPI {
     suspend fun getMe(
             @Header ("Authorization") token: String,
     ): Response<GetUserProfileResponse>
+
+    @Multipart
+    @PUT("item/{id}/user-photo")
+    suspend fun userImageUpload(
+            @Header("Authorization") token: String,
+            @Path("id") id: String,
+            @Part file: MultipartBody.Part
+    ): Response<ImageResponse>
 }

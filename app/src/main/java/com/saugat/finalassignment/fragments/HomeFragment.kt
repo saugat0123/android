@@ -5,20 +5,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout.HORIZONTAL
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.OrientationHelper
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
 import com.saugat.finalassignment.R
-import com.saugat.finalassignment.adapters.ItemMenuAdapter
 import com.saugat.finalassignment.adapters.ItemsAdapter
 import com.saugat.finalassignment.entity.Item
 import com.saugat.finalassignment.repository.ItemRepo
+import com.saugat.finalassignment.repository.UserRepo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -30,6 +28,8 @@ class HomeFragment : Fragment() {
     private lateinit var drink: ImageView
     private lateinit var vege: ImageView
     private lateinit var nonVege: ImageView
+    private lateinit var tvFname: TextView
+
     var i =0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +48,9 @@ class HomeFragment : Fragment() {
         drink = view.findViewById(R.id.drink)
         vege = view.findViewById(R.id.vege)
         nonVege = view.findViewById(R.id.nonVege)
+        tvFname = view.findViewById(R.id.tvFname)
+
+        loadUserDetails()
 
         drink.setOnClickListener {
             loadDrinks()
@@ -63,7 +66,28 @@ class HomeFragment : Fragment() {
 
         loadItems()
 
+
         return view
+    }
+
+    private fun loadUserDetails() {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val userRepo = UserRepo()
+                val response = userRepo.getMe()
+                if (response.success == true){
+                    val fName = response.data?.firstName
+                    withContext(Dispatchers.Main){
+                        tvFname.text = fName
+                    }
+                }
+            } catch (ex: Exception) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(activity,
+                            "Error : ${ex.toString()}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 
     @SuppressLint("WrongConstant")

@@ -3,6 +3,7 @@ package com.saugat.finalassignment.api
 import com.saugat.finalassignment.entity.Item
 import com.saugat.finalassignment.response.AddItemResponse
 import com.saugat.finalassignment.response.GetAlItemsResponse
+import com.saugat.finalassignment.response.GetMeResponse
 import com.saugat.finalassignment.response.ImageResponse
 import okhttp3.MultipartBody
 import retrofit2.Response
@@ -35,7 +36,6 @@ interface ItemAPI {
     suspend fun getNonVege(
             @Header ("Authorization") token: String,
     ):Response<GetAlItemsResponse>
-
 
     @Multipart
     @PUT("item/{id}/photo")
