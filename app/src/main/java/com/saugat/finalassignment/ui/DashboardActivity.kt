@@ -34,7 +34,8 @@ class DashboardActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.home -> currentFragment(HomeFragment())
                 R.id.account -> currentFragment(AccountFragment())
-                R.id.add -> startActivity(Intent(this,InsertFoodActivity::class.java))
+//                R.id.add -> startActivity(Intent(this,InsertFoodActivity::class.java))
+                R.id.notification -> startActivity(Intent(this,InsertFoodActivity::class.java))
 
             }
             true

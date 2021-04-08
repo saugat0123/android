@@ -30,7 +30,7 @@ interface UserAPI {
     ): Response<GetUserProfileResponse>
 
     @Multipart
-    @PUT("item/{id}/user-photo")
+    @PUT("/user/{id}/photo")
     suspend fun userImageUpload(
             @Header("Authorization") token: String,
             @Path("id") id: String,

@@ -1,8 +1,13 @@
 package com.saugat.finalassignment.ui
 
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.*
@@ -17,7 +22,11 @@ import kotlinx.coroutines.withContext
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import java.io.ByteArrayOutputStream
 import java.io.File
+import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
 
 class SignupActivity : AppCompatActivity() {
 
@@ -88,7 +97,7 @@ class SignupActivity : AppCompatActivity() {
                     val userRepo = UserRepo()
                     val response = userRepo.registerUser(user)
                     if(response.success == true){
-                        if (imageUrl != null){
+                        if (imageURL != null){
                             uploadImage(response.data!!._id!!)
                         }
                         withContext(Dispatchers.Main) {
@@ -111,9 +120,9 @@ class SignupActivity : AppCompatActivity() {
         }
     }
 
-    private var REQUEST_GALLERY_CODE = 2
-    private var REQUEST_CAMERA_CODE = 3
-    private var imageUrl: String? = null
+    private var req_gallery_code = 2
+    private var req_camera_code = 3
+    private var imageURL: String? = null
 
     private fun loadPopupMenu() {
         val popupMenu = PopupMenu(this, imgProfile)
@@ -133,21 +142,21 @@ class SignupActivity : AppCompatActivity() {
     private fun openGallery() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
-        startActivityForResult(intent, REQUEST_GALLERY_CODE)
+        startActivityForResult(intent, req_gallery_code)
     }
 
     private fun openCamera() {
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(cameraIntent, REQUEST_CAMERA_CODE)
+        startActivityForResult(cameraIntent, req_camera_code)
     }
 
     private fun uploadImage(userId: String) {
-        if (imageUrl != null) {
-            val file = File(imageUrl!!)
-            val reqFile =
-                    RequestBody.create(MediaType.parse("multipart/form-data"), file)
+        if (imageURL != null) {
+            val imageFile = File(imageURL!!)
+            val requestFile =
+                    RequestBody.create(MediaType.parse("multipart/form-data"), imageFile)
             val body =
-                    MultipartBody.Part.createFormData("file", file.name, reqFile)
+                    MultipartBody.Part.createFormData("file", imageFile.name, requestFile)
             CoroutineScope(Dispatchers.IO).launch {
                 try {
                     val userRepo = UserRepo()
@@ -169,6 +178,59 @@ class SignupActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == req_gallery_code && data != null) {
+                val selectedImage = data.data
+                val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
+                val contentResolver = contentResolver
+                val cursor =
+                        contentResolver.query(selectedImage!!, filePathColumn, null, null, null)
+                cursor!!.moveToFirst()
+                val columnIndex = cursor.getColumnIndex(filePathColumn[0])
+                imageURL = cursor.getString(columnIndex)
+                imgProfile.setImageBitmap(BitmapFactory.decodeFile(imageURL))
+                cursor.close()
+            } else if (requestCode == req_camera_code && data != null) {
+                val imageBitmap = data.extras?.get("data") as Bitmap
+                val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+                val file = bitmapToFile(imageBitmap, "$timeStamp.jpg")
+                imageURL = file!!.absolutePath
+                imgProfile.setImageBitmap(BitmapFactory.decodeFile(imageURL))
+            }
+        }
+    }
+
+    private fun bitmapToFile(
+            bitmap: Bitmap,
+            fileNameToSave: String
+    ): File? {
+        var file: File? = null
+        return try {
+            file = File(
+                    getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+                            .toString() + File.separator + fileNameToSave
+            )
+            file.createNewFile()
+            //Convert bitmap to byte array
+            val bos = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.PNG, 0, bos) // YOU can also save it in JPEG
+            val bitMapData = bos.toByteArray()
+            //write the bytes in file
+            val fos = FileOutputStream(file)
+            fos.write(bitMapData)
+            fos.flush()
+            fos.close()
+            file
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+            file // it will return null
         }
     }
 
