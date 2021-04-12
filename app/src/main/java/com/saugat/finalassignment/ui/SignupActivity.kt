@@ -5,12 +5,12 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import com.saugat.finalassignment.R
 import com.saugat.finalassignment.entity.User
 import com.saugat.finalassignment.repository.UserRepo
@@ -58,11 +58,11 @@ class SignupActivity : AppCompatActivity() {
         rootLayout = findViewById(R.id.rootLayout)
         imgProfile = findViewById(R.id.imgProfile)
 
-        imgProfile.setOnClickListener{
+        imgProfile.setOnClickListener {
             loadPopupMenu()
         }
 
-        btnSignup.setOnClickListener{
+        btnSignup.setOnClickListener {
             registerUser()
         }
 
@@ -85,19 +85,17 @@ class SignupActivity : AppCompatActivity() {
             etConfirmPass.error = "Password does not match"
             etConfirmPass.requestFocus()
             return
-        } else
-
-        {
+        } else {
             val user =
                     User(firstName = fname, lastName = lname, password = password,
-                            address = address,phone = phone,email = mail)
+                            address = address, phone = phone, email = mail)
 
             CoroutineScope(Dispatchers.IO).launch {
                 try {
                     val userRepo = UserRepo()
                     val response = userRepo.registerUser(user)
-                    if(response.success == true){
-                        if (imageURL != null){
+                    if (response.success == true) {
+                        if (imageURL != null) {
                             uploadImage(response.data!!._id!!)
                         }
                         withContext(Dispatchers.Main) {
@@ -112,7 +110,7 @@ class SignupActivity : AppCompatActivity() {
                     withContext(Dispatchers.Main) {
                         Toast.makeText(
                                 this@SignupActivity,
-                                ex.toString(), Toast.LENGTH_LONG
+                                "Error : ${ex.toString()}", Toast.LENGTH_LONG
                         ).show()
                     }
                 }
@@ -120,8 +118,8 @@ class SignupActivity : AppCompatActivity() {
         }
     }
 
-    private var req_gallery_code = 2
-    private var req_camera_code = 3
+    private var REQUEST_GALLERY_CODE = 3
+    private var REQUEST_CAMERA_CODE = 2
     private var imageURL: String? = null
 
     private fun loadPopupMenu() {
@@ -142,12 +140,12 @@ class SignupActivity : AppCompatActivity() {
     private fun openGallery() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
-        startActivityForResult(intent, req_gallery_code)
+        startActivityForResult(intent, REQUEST_GALLERY_CODE)
     }
 
     private fun openCamera() {
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(cameraIntent, req_camera_code)
+        startActivityForResult(cameraIntent, REQUEST_CAMERA_CODE)
     }
 
     private fun uploadImage(userId: String) {
@@ -186,7 +184,7 @@ class SignupActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == req_gallery_code && data != null) {
+            if (requestCode == REQUEST_GALLERY_CODE && data != null) {
                 val selectedImage = data.data
                 val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
                 val contentResolver = contentResolver
@@ -197,7 +195,7 @@ class SignupActivity : AppCompatActivity() {
                 imageURL = cursor.getString(columnIndex)
                 imgProfile.setImageBitmap(BitmapFactory.decodeFile(imageURL))
                 cursor.close()
-            } else if (requestCode == req_camera_code && data != null) {
+            } else if (requestCode == REQUEST_CAMERA_CODE && data != null) {
                 val imageBitmap = data.extras?.get("data") as Bitmap
                 val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
                 val file = bitmapToFile(imageBitmap, "$timeStamp.jpg")

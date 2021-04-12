@@ -35,7 +35,7 @@ class UserRepo : MyApiRequest() {
     suspend fun userImageUpload(id: String, body: MultipartBody.Part)
             : ImageResponse {
         return apiRequest {
-            userAPI.userImageUpload(ServiceBuilder.token!!, id, body)
+            userAPI.userImageUpload(id, body)
         }
     }
 }

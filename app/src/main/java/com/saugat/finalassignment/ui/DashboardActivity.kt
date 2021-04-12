@@ -11,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.saugat.finalassignment.R
 import com.saugat.finalassignment.fragments.AccountFragment
 import com.saugat.finalassignment.fragments.HomeFragment
+import com.saugat.finalassignment.fragments.ProfileFragment
 import java.lang.Exception
 
 class DashboardActivity : AppCompatActivity() {
@@ -33,7 +34,7 @@ class DashboardActivity : AppCompatActivity() {
         botomNav.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.home -> currentFragment(HomeFragment())
-                R.id.account -> currentFragment(AccountFragment())
+                R.id.account -> currentFragment(ProfileFragment())
 //                R.id.add -> startActivity(Intent(this,InsertFoodActivity::class.java))
                 R.id.notification -> startActivity(Intent(this,InsertFoodActivity::class.java))
 

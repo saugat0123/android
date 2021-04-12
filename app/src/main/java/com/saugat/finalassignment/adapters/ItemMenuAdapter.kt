@@ -53,15 +53,15 @@ class ItemMenuAdapter(private val lstItems: ArrayList<Item>,
                     .into(holder.itemImage)
         }
 
-        holder.btnAddtoCart.setOnClickListener {
-
-            val intent = Intent(context, CartFragment::class.java)
-            var bundle = Bundle()
-            bundle.putParcelable("item", item)
-            intent.putExtra("myBundle", bundle)
-            Toast.makeText(context, "${item.itemName} added to Cart!!", Toast.LENGTH_SHORT).show()
-            context.startActivity(intent)
-        }
+//        holder.btnAddtoCart.setOnClickListener {
+//
+//            val intent = Intent(context, CartFragment::class.java)
+//            var bundle = Bundle()
+//            bundle.putParcelable("item", item)
+//            intent.putExtra("myBundle", bundle)
+//            Toast.makeText(context, "${item.itemName} added to Cart!!", Toast.LENGTH_SHORT).show()
+//            context.startActivity(intent)
+//        }
 
     }
 

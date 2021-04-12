@@ -12,11 +12,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.saugat.finalassignment.R
 import com.saugat.finalassignment.adapters.ItemsAdapter
+import com.saugat.finalassignment.api.ServiceBuilder
 import com.saugat.finalassignment.entity.Item
 import com.saugat.finalassignment.repository.ItemRepo
 import com.saugat.finalassignment.repository.UserRepo
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -29,6 +32,7 @@ class HomeFragment : Fragment() {
     private lateinit var vege: ImageView
     private lateinit var nonVege: ImageView
     private lateinit var tvFname: TextView
+    private lateinit var profileImg: CircleImageView
 
     var i =0
 
@@ -49,8 +53,10 @@ class HomeFragment : Fragment() {
         vege = view.findViewById(R.id.vege)
         nonVege = view.findViewById(R.id.nonVege)
         tvFname = view.findViewById(R.id.tvFname)
+        profileImg = view.findViewById(R.id.profileImg)
 
         loadUserDetails()
+        loadItems()
 
         drink.setOnClickListener {
             loadDrinks()
@@ -64,9 +70,6 @@ class HomeFragment : Fragment() {
             loadNonVege()
         }
 
-        loadItems()
-
-
         return view
     }
 
@@ -77,8 +80,15 @@ class HomeFragment : Fragment() {
                 val response = userRepo.getMe()
                 if (response.success == true){
                     val fName = response.data?.firstName
+//                    val profilePic = response.data?.photo
+                    val imagePath = ServiceBuilder.loadImagePath() + response.data?.photo
                     withContext(Dispatchers.Main){
                         tvFname.text = fName
+                        Glide.with(requireContext())
+                                .load(imagePath)
+                                .fitCenter()
+                                .into(profileImg)
+
                     }
                 }
             } catch (ex: Exception) {
@@ -99,7 +109,7 @@ class HomeFragment : Fragment() {
                 if (response.success == true){
                     val lstItems = response.data
                     withContext(Dispatchers.Main){
-                        val adapter = context?.let { ItemsAdapter(lstItems as ArrayList<Item>, it) }
+                        val adapter = ItemsAdapter(lstItems as ArrayList<Item>, requireActivity())
                         rvItems.layoutManager = LinearLayoutManager(context,OrientationHelper.HORIZONTAL, false)
                         rvItems.adapter = adapter
                     }
@@ -122,7 +132,7 @@ class HomeFragment : Fragment() {
                 if (response.success == true){
                     val lstItems = response.data
                     withContext(Dispatchers.Main){
-                        val adapter = context?.let { ItemsAdapter(lstItems as ArrayList<Item>, it) }
+                        val adapter = ItemsAdapter(lstItems as ArrayList<Item>, requireActivity())
                         rvItems.layoutManager = LinearLayoutManager(context,OrientationHelper.HORIZONTAL, false)
                         rvItems.adapter = adapter
                     }
@@ -145,7 +155,7 @@ class HomeFragment : Fragment() {
                 if (response.success == true){
                     val lstItems = response.data
                     withContext(Dispatchers.Main){
-                        val adapter = context?.let { ItemsAdapter(lstItems as ArrayList<Item>, it) }
+                        val adapter = ItemsAdapter(lstItems as ArrayList<Item>, requireActivity())
                         rvItems.layoutManager = LinearLayoutManager(context,OrientationHelper.HORIZONTAL, false)
                         rvItems.adapter = adapter
                     }
@@ -168,7 +178,7 @@ class HomeFragment : Fragment() {
                 if (response.success == true){
                     val lstItems = response.data
                     withContext(Dispatchers.Main){
-                        val adapter = context?.let { ItemsAdapter(lstItems as ArrayList<Item>, it) }
+                        val adapter = ItemsAdapter(lstItems as ArrayList<Item>, requireActivity())
                         rvItems.layoutManager = LinearLayoutManager(context,OrientationHelper.HORIZONTAL, false)
                         rvItems.adapter = adapter
                     }
