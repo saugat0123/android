@@ -7,10 +7,8 @@ import android.os.Bundle
 import android.widget.*
 import com.google.android.material.snackbar.Snackbar
 import com.saugat.finalassignment.R
-import com.saugat.finalassignment.api.ServiceBuilder
-import com.saugat.finalassignment.fragments.AccountFragment
-import com.saugat.finalassignment.fragments.HomeFragment
 import com.saugat.finalassignment.repository.UserRepo
+import com.saugat.rblibrary.api.ServiceBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -98,8 +96,11 @@ class LoginActivity : AppCompatActivity() {
                 val repository = UserRepo()
                 val response = repository.loginUser(email, password)
                 if (response.success == true) {
+                    val id = response.data?._id
+
                 saveEmailPassword()
                     ServiceBuilder.token = "Bearer " + response.token
+                    ServiceBuilder.id = id
                     startActivity(
                             Intent(
                                     this@LoginActivity,

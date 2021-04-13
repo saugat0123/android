@@ -9,8 +9,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.saugat.finalassignment.R
-import com.saugat.finalassignment.api.ServiceBuilder
+
 import com.saugat.finalassignment.entity.Item
+import com.saugat.rblibrary.api.ServiceBuilder
 
 class ItemsAdapter(private val lstItems: ArrayList<Item>,
                    val context: Context)

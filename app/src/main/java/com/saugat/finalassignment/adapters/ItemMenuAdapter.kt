@@ -12,9 +12,10 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.saugat.finalassignment.R
-import com.saugat.finalassignment.api.ServiceBuilder
+
 import com.saugat.finalassignment.entity.Item
 import com.saugat.finalassignment.fragments.CartFragment
+import com.saugat.rblibrary.api.ServiceBuilder
 import de.hdodenhof.circleimageview.CircleImageView
 
 class ItemMenuAdapter(private val lstItems: ArrayList<Item>,
@@ -53,15 +54,14 @@ class ItemMenuAdapter(private val lstItems: ArrayList<Item>,
                     .into(holder.itemImage)
         }
 
-//        holder.btnAddtoCart.setOnClickListener {
-//
-//            val intent = Intent(context, CartFragment::class.java)
-//            var bundle = Bundle()
-//            bundle.putParcelable("item", item)
-//            intent.putExtra("myBundle", bundle)
-//            Toast.makeText(context, "${item.itemName} added to Cart!!", Toast.LENGTH_SHORT).show()
-//            context.startActivity(intent)
-//        }
+        holder.btnAddtoCart.setOnClickListener {
+            val intent = Intent(context, CartFragment::class.java)
+            var bundle = Bundle()
+            bundle.putParcelable("item", item)
+            intent.putExtra("myBundle", bundle)
+            Toast.makeText(context, "${item.itemName} added to Cart!!", Toast.LENGTH_SHORT).show()
+            context.startActivity(intent)
+        }
 
     }
 
