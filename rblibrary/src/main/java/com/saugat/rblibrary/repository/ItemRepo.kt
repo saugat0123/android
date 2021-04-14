@@ -2,9 +2,9 @@ package com.saugat.finalassignment.repository
 
 
 import com.saugat.finalassignment.entity.Item
-import com.saugat.finalassignment.response.AddItemResponse
-import com.saugat.finalassignment.response.GetAlItemsResponse
-import com.saugat.finalassignment.response.ImageResponse
+import com.saugat.rblibrary.response.AddItemResponse
+import com.saugat.rblibrary.response.GetAlItemsResponse
+import com.saugat.rblibrary.response.ImageResponse
 import com.saugat.rblibrary.api.ItemAPI
 import com.saugat.rblibrary.api.MyApiRequest
 import com.saugat.rblibrary.api.ServiceBuilder
@@ -14,7 +14,7 @@ import okhttp3.MultipartBody
 class ItemRepo: MyApiRequest() {
     private val itemAPI= ServiceBuilder.buildService(ItemAPI::class.java)
 
-    suspend fun addItem(item: Item): AddItemResponse{
+    suspend fun addItem(item: Item): AddItemResponse {
         return apiRequest {
             itemAPI.addItem(
                     ServiceBuilder.token!!, item
@@ -22,25 +22,25 @@ class ItemRepo: MyApiRequest() {
         }
     }
 
-    suspend fun getAllItems(): GetAlItemsResponse{
+    suspend fun getAllItems(): GetAlItemsResponse {
         return apiRequest {
             itemAPI.getAllItems(ServiceBuilder.token!!)
         }
     }
 
-    suspend fun getDrinks(): GetAlItemsResponse{
+    suspend fun getDrinks(): GetAlItemsResponse {
         return apiRequest {
             itemAPI.getDrinks(ServiceBuilder.token!!)
         }
     }
 
-    suspend fun getVege(): GetAlItemsResponse{
+    suspend fun getVege(): GetAlItemsResponse {
         return apiRequest {
             itemAPI.getVege(ServiceBuilder.token!!)
         }
     }
 
-    suspend fun getNonVege(): GetAlItemsResponse{
+    suspend fun getNonVege(): GetAlItemsResponse {
         return apiRequest {
             itemAPI.getNonVege(ServiceBuilder.token!!)
         }

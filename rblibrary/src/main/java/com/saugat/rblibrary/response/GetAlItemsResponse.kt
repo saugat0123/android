@@ -1,4 +1,4 @@
-package com.saugat.finalassignment.response
+package com.saugat.rblibrary.response
 
 import com.saugat.finalassignment.entity.Item
 

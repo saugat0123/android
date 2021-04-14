@@ -2,10 +2,10 @@ package com.saugat.finalassignment.repository
 
 
 import com.saugat.finalassignment.entity.User
-import com.saugat.finalassignment.response.GetUserProfileResponse
-import com.saugat.finalassignment.response.ImageResponse
+import com.saugat.rblibrary.response.GetUserProfileResponse
+import com.saugat.rblibrary.response.ImageResponse
 import com.saugat.finalassignment.response.LoginResponse
-import com.saugat.finalassignment.response.UpdateUserResponse
+import com.saugat.rblibrary.response.UpdateUserResponse
 import com.saugat.rblibrary.api.MyApiRequest
 import com.saugat.rblibrary.api.ServiceBuilder
 import com.saugat.rblibrary.api.UserAPI

@@ -1,10 +1,9 @@
 package com.saugat.rblibrary.api
 
 import com.saugat.finalassignment.entity.Item
-import com.saugat.finalassignment.response.AddItemResponse
-import com.saugat.finalassignment.response.GetAlItemsResponse
-import com.saugat.finalassignment.response.GetMeResponse
-import com.saugat.finalassignment.response.ImageResponse
+import com.saugat.rblibrary.response.AddItemResponse
+import com.saugat.rblibrary.response.GetAlItemsResponse
+import com.saugat.rblibrary.response.ImageResponse
 import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.*

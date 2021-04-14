@@ -1,10 +1,10 @@
 package com.saugat.rblibrary.api
 
 import com.saugat.finalassignment.entity.User
-import com.saugat.finalassignment.response.GetUserProfileResponse
-import com.saugat.finalassignment.response.ImageResponse
+import com.saugat.rblibrary.response.GetUserProfileResponse
+import com.saugat.rblibrary.response.ImageResponse
 import com.saugat.finalassignment.response.LoginResponse
-import com.saugat.finalassignment.response.UpdateUserResponse
+import com.saugat.rblibrary.response.UpdateUserResponse
 import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.*
