@@ -1,6 +1,6 @@
 package com.saugat.finalassignment.response
 
-import com.saugat.finalassignment.entity.User
+import com.saugat.rblibrary.entity.User
 
 data class LoginResponse(
         val success: Boolean? = null,

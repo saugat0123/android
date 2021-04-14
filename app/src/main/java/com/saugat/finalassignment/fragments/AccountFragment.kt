@@ -8,19 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.saugat.finalassignment.R
-import com.saugat.finalassignment.adapters.CartAdapter
-import com.saugat.finalassignment.entity.User
-import com.saugat.finalassignment.repository.UserRepo
 import com.saugat.finalassignment.ui.LoginActivity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 
 @Suppress("CAST_NEVER_SUCCEEDS")

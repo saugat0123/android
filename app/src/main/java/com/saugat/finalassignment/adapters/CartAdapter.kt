@@ -9,9 +9,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.saugat.finalassignment.R
-import com.saugat.finalassignment.entity.Item
+import com.saugat.rblibrary.entity.Cart
 
-class CartAdapter(private val lstItems: ArrayList<Item>, val context: Context)
+class CartAdapter(private val lstItems: ArrayList<Cart>, val context: Context)
     : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
     class CartViewHolder(view: View) : RecyclerView.ViewHolder(view){
@@ -29,8 +29,9 @@ class CartAdapter(private val lstItems: ArrayList<Item>, val context: Context)
     }
 
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
-        val user = lstItems[position]
-
+        val cart = lstItems[position]
+        holder.foodName.text = cart.itemName
+        holder.foodPrice.text = cart.itemPrice.toString()
     }
 
     override fun getItemCount(): Int {

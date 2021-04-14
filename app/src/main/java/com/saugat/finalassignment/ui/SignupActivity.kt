@@ -12,8 +12,8 @@ import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.saugat.finalassignment.R
-import com.saugat.finalassignment.entity.User
-import com.saugat.finalassignment.repository.UserRepo
+import com.saugat.rblibrary.entity.User
+import com.saugat.rblibrary.repository.UserRepo
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

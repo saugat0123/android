@@ -1,7 +1,7 @@
-package com.saugat.finalassignment.repository
+package com.saugat.rblibrary.repository
 
 
-import com.saugat.finalassignment.entity.User
+import com.saugat.rblibrary.entity.User
 import com.saugat.rblibrary.response.GetUserProfileResponse
 import com.saugat.rblibrary.response.ImageResponse
 import com.saugat.finalassignment.response.LoginResponse
@@ -34,7 +34,7 @@ class UserRepo : MyApiRequest() {
         }
     }
 
-    suspend fun updateUser(id:String, user: User ): UpdateUserResponse {
+    suspend fun updateUser(id:String, user: User): UpdateUserResponse {
         return apiRequest {
             userAPI.updateUser(id, user)
         }

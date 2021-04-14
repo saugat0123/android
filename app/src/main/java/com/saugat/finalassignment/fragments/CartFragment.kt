@@ -5,12 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.OrientationHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.saugat.finalassignment.R
-import com.saugat.finalassignment.adapters.ItemsAdapter
-import com.saugat.finalassignment.entity.Item
 
 
 class CartFragment : Fragment() {

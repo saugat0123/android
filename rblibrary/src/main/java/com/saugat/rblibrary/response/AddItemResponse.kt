@@ -1,6 +1,6 @@
 package com.saugat.rblibrary.response
 
-import com.saugat.finalassignment.entity.Item
+import com.saugat.rblibrary.entity.Item
 
 data class AddItemResponse (
     val success: Boolean? = null,

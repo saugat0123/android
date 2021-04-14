@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.saugat.finalassignment.R
 
-import com.saugat.finalassignment.entity.Item
+import com.saugat.rblibrary.entity.Item
 import com.saugat.finalassignment.fragments.CartFragment
 import com.saugat.rblibrary.api.ServiceBuilder
 import de.hdodenhof.circleimageview.CircleImageView

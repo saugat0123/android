@@ -1,4 +1,4 @@
-package com.saugat.finalassignment.entity
+package com.saugat.rblibrary.entity
 
 import android.os.Parcel
 import android.os.Parcelable

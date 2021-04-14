@@ -1,10 +1,9 @@
 package com.saugat.finalassignment
 
-import com.saugat.finalassignment.api.ServiceBuilder
-import com.saugat.finalassignment.entity.Item
-import com.saugat.finalassignment.entity.User
-import com.saugat.finalassignment.repository.ItemRepo
-import com.saugat.finalassignment.repository.UserRepo
+import com.saugat.rblibrary.entity.Item
+import com.saugat.rblibrary.entity.User
+import com.saugat.rblibrary.repository.ItemRepo
+import com.saugat.rblibrary.repository.UserRepo
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Test

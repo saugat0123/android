@@ -1,7 +1,7 @@
-package com.saugat.finalassignment.repository
+package com.saugat.rblibrary.repository
 
 
-import com.saugat.finalassignment.entity.Item
+import com.saugat.rblibrary.entity.Item
 import com.saugat.rblibrary.response.AddItemResponse
 import com.saugat.rblibrary.response.GetAlItemsResponse
 import com.saugat.rblibrary.response.ImageResponse

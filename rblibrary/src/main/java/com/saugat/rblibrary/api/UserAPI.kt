@@ -1,6 +1,6 @@
 package com.saugat.rblibrary.api
 
-import com.saugat.finalassignment.entity.User
+import com.saugat.rblibrary.entity.User
 import com.saugat.rblibrary.response.GetUserProfileResponse
 import com.saugat.rblibrary.response.ImageResponse
 import com.saugat.finalassignment.response.LoginResponse
@@ -14,7 +14,7 @@ interface UserAPI {
     // Register User
     @POST ("/register")
     suspend fun registerUser(
-            @Body user:User)
+            @Body user: User)
     :Response<LoginResponse>
 
     // Login User
@@ -33,7 +33,7 @@ interface UserAPI {
     @PUT("/update/user/{id}")
     suspend fun updateUser(
             @Path("id") id: String,
-            @Body user:User
+            @Body user: User
     ): Response<UpdateUserResponse>
 
     @Multipart

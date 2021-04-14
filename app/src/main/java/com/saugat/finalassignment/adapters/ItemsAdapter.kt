@@ -6,12 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.saugat.finalassignment.R
 
-import com.saugat.finalassignment.entity.Item
+import com.saugat.rblibrary.entity.Item
 import com.saugat.rblibrary.api.ServiceBuilder
+import com.saugat.rblibrary.entity.Cart
+import com.saugat.rblibrary.repository.CartRepo
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ItemsAdapter(private val lstItems: ArrayList<Item>,
                    val context: Context)
@@ -22,7 +29,7 @@ class ItemsAdapter(private val lstItems: ArrayList<Item>,
         val itemName: TextView = view.findViewById(R.id.itemName)
         val itemPrice: TextView = view.findViewById(R.id.itemPrice)
         val itemImg: ImageView = view.findViewById(R.id.itemImg)
-//        val addToCart: ImageView = view.findViewById(R.id.addToCart)
+        val addToCart: ImageView = view.findViewById(R.id.addToCart)
 //        val like: ImageView = view.findViewById(R.id.like)
     }
 
@@ -45,15 +52,32 @@ class ItemsAdapter(private val lstItems: ArrayList<Item>,
                     .into(holder.itemImg)
         }
 
-//        holder.addToCart.setOnClickListener {
-//
-////            val intent = Intent(context, CartFragment::class.java)
-////            var bundle = Bundle()
-////            bundle.putParcelable("item", item)
-////            intent.putExtra("myBundle", bundle)
-////            Toast.makeText(context, "${item.itemName} added to Cart!!", Toast.LENGTH_SHORT).show()
-////            context.startActivity(intent)
-//        }
+        holder.addToCart.setOnClickListener {
+            val carts = Cart(itemName = item.itemName,itemPrice = item.itemPrice,photo = imagePath)
+
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    val cartRepo = CartRepo()
+                    val response = cartRepo.addItemToCart(carts)
+                    if(response.success == true){
+
+                        withContext(Dispatchers.Main) {
+                            Toast.makeText(
+                                    context,
+                                    "${item.itemName} Added to Cart", Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                } catch (ex: Exception) {
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(
+                                context,
+                                ex.toString(), Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+            }
+        }
 
     }
 

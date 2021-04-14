@@ -1,6 +1,6 @@
 package com.saugat.rblibrary.response
 
-import com.saugat.finalassignment.entity.User
+import com.saugat.rblibrary.entity.User
 
 data class GetUserProfileResponse (
         val success: Boolean? = null,

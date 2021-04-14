@@ -19,9 +19,8 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.saugat.finalassignment.R
 
-import com.saugat.finalassignment.entity.User
-import com.saugat.finalassignment.repository.ItemRepo
-import com.saugat.finalassignment.repository.UserRepo
+import com.saugat.rblibrary.entity.User
+import com.saugat.rblibrary.repository.UserRepo
 import com.saugat.rblibrary.api.ServiceBuilder
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.coroutines.CoroutineScope
