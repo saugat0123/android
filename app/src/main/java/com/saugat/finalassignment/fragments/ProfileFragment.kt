@@ -1,7 +1,9 @@
 package com.saugat.finalassignment.fragments
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -16,8 +18,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.PopupMenu
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.saugat.finalassignment.R
+import com.saugat.finalassignment.ui.LoginActivity
 
 import com.saugat.rblibrary.entity.User
 import com.saugat.rblibrary.repository.UserRepo
@@ -47,6 +51,9 @@ class ProfileFragment : Fragment() {
 //    private lateinit var password: EditText
     private lateinit var phone: EditText
     private lateinit var btnUpdate: Button
+    private lateinit var btnLogout: Button
+    private lateinit var sharedPref: SharedPreferences
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +73,7 @@ class ProfileFragment : Fragment() {
 //        password = view.findViewById(R.id.password)
         phone = view.findViewById(R.id.phone)
         btnUpdate = view.findViewById(R.id.btnUpdate)
+        btnLogout = view.findViewById(R.id.btnLogout)
 
         loadAllUserDetails()
 
@@ -75,6 +83,14 @@ class ProfileFragment : Fragment() {
 
         btnUpdate.setOnClickListener {
             updateDetails()
+        }
+
+        btnLogout.setOnClickListener {
+            sharedPref = requireActivity().getSharedPreferences("MyPref", AppCompatActivity.MODE_PRIVATE)
+            val editor:SharedPreferences.Editor = sharedPref.edit()
+            editor.clear()
+            editor.apply()
+            startActivity(Intent(requireActivity(),LoginActivity::class.java))
         }
 
         return view

@@ -9,9 +9,7 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.saugat.finalassignment.R
-import com.saugat.finalassignment.fragments.AccountFragment
-import com.saugat.finalassignment.fragments.HomeFragment
-import com.saugat.finalassignment.fragments.ProfileFragment
+import com.saugat.finalassignment.fragments.*
 import java.lang.Exception
 
 class DashboardActivity : AppCompatActivity() {
@@ -35,7 +33,7 @@ class DashboardActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.home -> currentFragment(HomeFragment())
                 R.id.account -> currentFragment(ProfileFragment())
-                R.id.add -> startActivity(Intent(this,InsertFoodActivity::class.java))
+                R.id.basket -> startActivity(Intent(this,AddToCartFragment::class.java))
                 R.id.notification -> startActivity(Intent(this,InsertFoodActivity::class.java))
 
             }

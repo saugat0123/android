@@ -53,7 +53,11 @@ class ItemsAdapter(private val lstItems: ArrayList<Item>,
         }
 
         holder.addToCart.setOnClickListener {
-            val carts = Cart(itemName = item.itemName,itemPrice = item.itemPrice,photo = imagePath)
+            val name = item.itemName
+            val price = item.itemPrice.toString()
+            val pic = item.photo
+
+            val carts = Cart(itemName = name,itemPrice = price,photo = pic)
 
             CoroutineScope(Dispatchers.IO).launch {
                 try {
@@ -64,7 +68,7 @@ class ItemsAdapter(private val lstItems: ArrayList<Item>,
                         withContext(Dispatchers.Main) {
                             Toast.makeText(
                                     context,
-                                    "${item.itemName} Added to Cart", Toast.LENGTH_SHORT
+                                    "$name Added to Cart", Toast.LENGTH_SHORT
                             ).show()
                         }
                     }

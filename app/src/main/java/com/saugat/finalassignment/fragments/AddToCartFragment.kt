@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
-class CartFragment : Fragment() {
+class AddToCartFragment : Fragment() {
 
     private lateinit var recyclerViewCart: RecyclerView
 

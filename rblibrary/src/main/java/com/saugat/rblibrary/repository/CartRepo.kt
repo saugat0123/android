@@ -4,15 +4,13 @@ import com.saugat.rblibrary.api.CartAPI
 import com.saugat.rblibrary.api.MyApiRequest
 import com.saugat.rblibrary.api.ServiceBuilder
 import com.saugat.rblibrary.entity.Cart
-import com.saugat.rblibrary.response.AddItemResponse
-import com.saugat.rblibrary.response.DeleteCartResponse
-import com.saugat.rblibrary.response.GetAlItemsResponse
+import com.saugat.rblibrary.response.*
 
 class CartRepo: MyApiRequest() {
 
     private val cartAPI= ServiceBuilder.buildService(CartAPI::class.java)
 
-    suspend fun addItemToCart(cart: Cart): AddItemResponse {
+    suspend fun addItemToCart(cart: Cart): AddCartResponse {
         return apiRequest {
             cartAPI.addItemToCart(
                     ServiceBuilder.token!!, cart
@@ -20,7 +18,7 @@ class CartRepo: MyApiRequest() {
         }
     }
 
-    suspend fun getCartItems(): GetAlItemsResponse {
+    suspend fun getCartItems(): GetCartItemsResponse {
         return apiRequest {
             cartAPI.getCartItems(ServiceBuilder.token!!)
         }
