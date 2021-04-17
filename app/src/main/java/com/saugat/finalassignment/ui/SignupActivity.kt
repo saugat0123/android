@@ -5,12 +5,15 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import com.saugat.finalassignment.R
 import com.saugat.rblibrary.entity.User
 import com.saugat.rblibrary.repository.UserRepo
@@ -104,6 +107,7 @@ class SignupActivity : AppCompatActivity() {
                                     "User Registered", Toast.LENGTH_SHORT
                             ).show()
                             emptyForm()
+                            showHighPriorityNotification()
                         }
                     }
                 } catch (ex: Exception) {
@@ -230,6 +234,23 @@ class SignupActivity : AppCompatActivity() {
             e.printStackTrace()
             file // it will return null
         }
+    }
+    private fun showHighPriorityNotification() {
+
+        val notificationManager = NotificationManagerCompat.from(this)
+
+        val notificationChannels = NotificationChannels(this)
+        notificationChannels.createNotificationChannels()
+
+        val notification = NotificationCompat.Builder(this, notificationChannels.CHANNEL_1)
+                .setSmallIcon(R.drawable.ic_notification)
+                .setContentTitle("High priority notification")
+                .setContentText("This is my notification body")
+                .setColor(Color.BLUE)
+                .build()
+
+        notificationManager.notify(1, notification)
+
     }
 
     private fun emptyForm() {

@@ -1,7 +1,6 @@
 package com.saugat.finalassignment.fragments
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
@@ -26,6 +25,7 @@ import com.saugat.finalassignment.ui.LoginActivity
 import com.saugat.rblibrary.entity.User
 import com.saugat.rblibrary.repository.UserRepo
 import com.saugat.rblibrary.api.ServiceBuilder
+import com.saugat.rblibrary.repository.ItemRepo
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -145,6 +145,7 @@ class ProfileFragment : Fragment() {
                 if (response != null) {
                     if (response.success == true){
                         if (imageUrl != null){
+                            println(imageUrl.toString())
                             uploadImage(response.data!!._id!!)
                         }
                         withContext(Dispatchers.Main){

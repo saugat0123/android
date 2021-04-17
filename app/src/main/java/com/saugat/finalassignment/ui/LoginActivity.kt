@@ -2,6 +2,10 @@ package com.saugat.finalassignment.ui
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
@@ -14,8 +18,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class LoginActivity : AppCompatActivity() {
-
+class LoginActivity : AppCompatActivity() , SensorEventListener {
+    private lateinit var sensorManager: SensorManager
+    private var sensor: Sensor? = null
     private lateinit var btnLogin: Button
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
@@ -37,9 +42,15 @@ class LoginActivity : AppCompatActivity() {
         tvSignup = findViewById(R.id.tvSignup)
         rootLayout = findViewById(R.id.rootLayout)
         checkBox = findViewById(R.id.checkBox)
-
+        sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
         sharedPref = getSharedPreferences("MyPref", MODE_PRIVATE)
         isRemembered = sharedPref.getBoolean("checked", false)
+        if (!checkSensor())
+            return
+        else {
+            sensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY)
+            sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL)
+        }
         if (isRemembered){
             startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
         }
@@ -54,7 +65,13 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
+    private fun checkSensor(): Boolean {
+        var flag = true
+        if (sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY) == null) {
+            flag = false
+        }
+        return flag
+    }
     private fun passData(){
 
     }
@@ -157,6 +174,20 @@ class LoginActivity : AppCompatActivity() {
             return false
         }
         return true
+    }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        val values = event!!.values[0]
+
+        if(values<=4)
+       login()
+        else
+          return
+
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
+
     }
 
 }
